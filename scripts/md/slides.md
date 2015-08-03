@@ -4,31 +4,35 @@ build_lists: true
 
 <!---
 
-  eZ Summercamp 2014 Talk
+  eZ Summercamp 2015 Talk
 
-  Learnings from Real eZ Publish 5 Projects
+  Multiple Colors of Migration
 
-  (c) 2014 Ekkehard Dörre, Donat Fritschy
+  (c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe
+
 
 -->
-
-* <strong>Donat</strong> is owner of Webmanufaktur, a full service web agency in Switzerland. He works as projects manager, software architect and developer and likes thinking outside of the box. In the last year he has been involved in major pure eZ 5 projects.
 * <strong>Ekke</strong> is a consultant with deep knowledge in eZ Publish 4 and 5, eZ Find / Apache Solr and with a faible for coming cutting edge web technologies. He is one of the organizers of the PHP Unconference since eight years.
+* <strong>Martin</strong> is TODO
+* <strong>Donat</strong> is owner of Webmanufaktur, a full service web agency in Switzerland. He works as projects manager, software architect and developer and likes thinking outside of the box. In the last year he has been involved in major pure eZ 5 projects.
+
 * Members of CJW Network
 
 ---
 
-title: Learnings from Real eZ Publish 5 Projects
+title: Multiple Colors of Migration DOING
 class: big
 build_lists: true
 
-- Last year we have presented our Cookbook...
-- ... today you get a Ratatouille ;-)
+- There are still many eZ Publish legacy sites 
+- eZ Publish 5.4 / 2014.11 is supported until May 2019
+- So there is a stable business base for the next 4 years
+- And since one year in internet is seven years in real live, 28 years of best business!
+- **Why waiting? OK, we try to help you with some know how**
 
-- **Let's share the experiences you and we made in the last year!**
 
-- <http://de.slideshare.net/dfritschy/how-to-start-with-ez-publish-5>
-- <https://github.com/dfritschy/cjw-cookbook>
+- TODO <https://github.com/cjw-network/SummerCampBundle/raw/master/Resources/doc/learnings.pdf>
+- TODO <https://github.com/cjw-network/SummerCampBundle>
 
 ---
 
@@ -928,7 +932,7 @@ parameters:
 
 ---
 
-title: Project Status
+title: Project Status TODO
 
 * Currently in private Beta, not yet released
 * Ideas and Feedback welcome
@@ -939,7 +943,7 @@ title: Project Status
 
 ---
 
-title: Ressources
+title: Ressources TODO
 
 Slides as PDF
 

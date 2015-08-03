@@ -1,11 +1,11 @@
 var SLIDE_CONFIG = {
     // Slide settings
     settings: {
-        title: 'Learnings from Real eZ Publish 5 Projects',
+        title: 'Multiple Colors of Migration',
         subtitle: '',
         /*eventInfo: {
-         title: 'eZ Summercamp 2013',
-         date: '4. September 2013'
+         title: 'eZ Summercamp 2015',
+         date: '27. August 2015'
          },*/
         useBuilds: true, // Default: true. False will turn off slide animation builds.
         usePrettify: true, // Default: true
@@ -23,19 +23,28 @@ var SLIDE_CONFIG = {
     // Author information
     presenters: [
         {
-            name: 'Donat Fritschy',
-            company: 'Webmanufaktur',
-            // gplus: 'http://plus.google.com/1234567890',
-            twitter: '@webmanufaktur',
-            www: 'http://www.webmanufaktur.ch',
-            github: 'http://github.com/dfritschy'},
-        {
             name: 'Ekkehard Dörre',
             company: 'Coolscreen',
             // gplus: 'http://plus.google.com/1234567890',
             twitter: '@ekked',
             www: 'http://www.coolscreen.de',
             github: 'http://github.com/ekked'
-        }
+        },
+        {
+            name: 'Martin Wilde',
+            company: 'JAC Systeme',
+            // gplus: 'http://plus.google.com/1234567890',
+            //twitter: '@ekked',
+            www: 'http://www.jac-systeme.de',
+            github: 'http://github.com/m-wilde'
+        },
+        {
+            name: 'Donat Fritschy',
+            company: 'Webmanufaktur',
+            // gplus: 'http://plus.google.com/1234567890',
+            twitter: '@webmanufaktur',
+            www: 'http://www.webmanufaktur.ch',
+            github: 'http://github.com/dfritschy'},
+
     ]
 };

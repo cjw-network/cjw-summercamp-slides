@@ -1,8 +1,10 @@
-# eZ Summercamp 2014 Talk
+# eZ Summercamp 2015 Talk
 
-Learnings from Real eZ Publish 5 Projects
+Multiple Colors of Migration
 
-(c) 2014 Ekkehard Doerre, Donat Fritschy
+We'll show you different ways to migrate your legacy installation to eZ Publish 5.4, having eZ Publish 6 in mind. We'll also show you how to handle pure legacy, hybrid, and pure Symfony projects in one eZ Publish installation.
+
+(c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe
 
 
 
