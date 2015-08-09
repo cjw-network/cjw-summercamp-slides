@@ -20,44 +20,81 @@ build_lists: true
 
 ---
 
-title: Multiple Colors of Migration DOING
-class: big
+title: Multiple Colors of Migration
 build_lists: true
 
 - There are still many eZ Publish legacy sites 
 - eZ Publish 5.4 / 2014.11 is supported until May 2019
 - So there is a stable business base for the next 4 years
 - And since one year in internet is seven years in real live, 28 years of best business!
-- **Why waiting? OK, we try to help you with some know how**
+- **Why waiting? OK, we try to help you with arguments and know how**
 
 
-- TODO <https://github.com/cjw-network/SummerCampBundle/raw/master/Resources/doc/learnings.pdf>
-- TODO <https://github.com/cjw-network/SummerCampBundle>
+- <https://github.com/cjw-network/cjw-summercamp-slides/blob/master/Multiple-Colors-of-Migration.pdf>
+
 
 ---
 
 title: Who is in the audience?
+subtitle: Let me know you better ...
 build_lists: true
 
 - Who is coming from the eZ World?
 - Who is coming from the Symfony World?
-
 - Who has realized eZ Publish 5 sites (productive)?
 - Who has realized pure eZ Publish 5 sites (no legacy)?
 
 ---
 
-title: Agenda
-class: big
+title: TODO Agenda
 build_lists: true
 
 Things we would like to discuss:
 
-- Good Practice
-- ez View Cache vs. HTTP Cache
-- Debugging
-- Pitfalls
+- Reasons for not waiting any more
+- b
+- c
+- d
 - MultiSite Setup
+
+---
+
+title: Why waiting?
+subtitle: Financial reasons - How to sell it to your customer?
+build_lists: true
+
+
+- update / upgrade - but still no new feature for editors
+- many security fixes - but often part of maintenance support
+- new feature mobile editing - too long to wait for: in eZ Platform 6
+
+- Relaunch: Make responsive, look at <http://getbootstrap.com> or <http://foundation.zurb.com/>
+- Relaunch: Mobile first, it is coming to marketing people
+- Do you have one more?
+
+---
+
+title: Why waiting?
+subtitle: Technical reasons for starting now
+build_lists: true
+
+
+- it is on the upgrade path to eZ Plattform 6
+- many security and bug fixes
+- TWIG for new templates and fallback to old templates when needed
+- easy to extend with Symfony bundles, there are more than 2500 on e.g. <http://knpbundles.com/>
+- switch to responsive webdesign and make it mobile first
+
+---
+
+title: Which version to use?
+subtitle: We need a version as a stable base for the next 4 years
+build_lists: true
+
+- eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019
+- many fixes are in the legacy bridge
+- newer versions are pre alpha
+- 
 
 ---
 
@@ -943,18 +980,18 @@ title: Project Status TODO
 
 ---
 
-title: Ressources TODO
+title: Ressources
 
 Slides as PDF
 
-* see `src/Cjw/SummerCampBundle/Resources/doc/learnings.pdf`
-* <https://github.com/cjw-network/SummerCampBundle/Resources/doc/learnings.pdf>
+* <https://github.com/cjw-network/cjw-summercamp-slides/blob/master/Multiple-Colors-of-Migration.pdf>
+
 
 Slides (Source)
 
-* <https://github.com/dfritschy/cjw-summercamp-slides>
+* <https://github.com/cjw-network/cjw-summercamp-slides>
 
-CJW MultiSiteBundle
+CJW MultiSiteBundle TODO link to cjwpublish
 
 * <https://github.com/cjw-network/MultiSiteBundle>
 * <mailto:info@cjw-network.com>
