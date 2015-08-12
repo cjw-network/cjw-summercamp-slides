@@ -29,14 +29,13 @@ build_lists: true
 - And since one year in internet is seven years in real live, 28 years of best business!
 - **Why waiting? OK, we try to help you with arguments and know how**
 
-
 - <https://github.com/cjw-network/cjw-summercamp-slides/blob/master/Multiple-Colors-of-Migration.pdf>
 
 
 ---
 
 title: Who is in the audience?
-subtitle: Let me know you better ...
+subtitle: Let us know you better ...
 build_lists: true
 
 - Who is coming from the eZ World?
@@ -52,10 +51,10 @@ build_lists: true
 Things we would like to discuss:
 
 - Reasons for not waiting any more
-- b
-- c
-- d
-- MultiSite Setup
+- Run legacy only
+- Run Symfony only
+- 
+- Multi-Site/Multi-Repository Setup
 
 ---
 
@@ -83,7 +82,7 @@ build_lists: true
 - many security and bug fixes
 - TWIG for new templates and fallback to old templates when needed
 - easy to extend with Symfony bundles, there are more than 2500 on e.g. <http://knpbundles.com/>
-- switch to responsive webdesign and make it mobile first
+- switch to responsive web design and make it mobile first
 
 ---
 
@@ -92,17 +91,49 @@ subtitle: We need a version as a stable base for the next 4 years
 build_lists: true
 
 - eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019
-- many fixes are in the legacy bridge
-- newer versions are pre alpha
-- 
+- but many fixes are in the legacy bridge
+- but newer versions are pre alpha
+- but there is no real save version to switch
+- solution take our cjwpublish and help to keep it fresh
 
 ---
 
-title: Good Practice
+title: Which version to use?
+subtitle: We need a version as a stable base for the next 4 years
+build_lists: true
+
+- eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019
+- but many fixes are in the legacy bridge
+- but newer versions are pre alpha
+- but there is no real save version to switch
+- solution take our cjwpublish and help to keep it fresh
+
+---
+
+title: Run legacy only
 subtitle:
 class: segue dark nobackground
 
 ---
+
+title: eZ Publish Legacy 
+subtitle: We need a version as a stable base for the next 4 years
+build_lists: true
+
+- eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019
+- but many fixes are in the legacy bridge
+- but newer versions are pre alpha
+- but there is no real save version to switch
+- solution take our cjwpublish and help to keep it fresh
+
+---
+
+title: Run Symfony only
+subtitle:
+class: segue dark nobackground
+
+---
+
 
 title: Team up with a Symfony Crack
 build_lists: true
@@ -651,97 +682,13 @@ system:
 
 </pre>
 
----
 
-title: Debugging
-subtitle: Coping with blank screens
-class: segue dark nobackground
 
 ---
 
-title: Blank screen, "503 Service not available"
 
-* PHP errors (Syntax error, Memory, Outdated Autoloads, ...)
-* Configuration errors (DB connection, ...)
 
-* Switch to DEV mode for better debugging
-* Check the log files
-<pre>
-    Apache/PHP Log
-    ezpublish/logs/&lt;env&gt;.log
-    ezpublish_legacy/var/log/\*
-    ezpublish_legacy/var/&lt;siteaccess&gt;/log/\*
-</pre>
-* Check write permissions on log files!
 
----
-
-title: TwigBundle:Exception:error500.html.twig
-
-* NEVER a Twig error!
-* Caused by response 500 "Internal Server Error" and missing error template
-
-* Checks as before
-
----
-
-title: Twig Exception: Invalid variation "&lt;variation&gt;"
-
-Caused by problems when accessing images
-
-* Check if the file exists
-* Check permissions on `ezpublish_legacy/var/<siteaccess>/storage`
-* Check log files
-* Clear cache
-
----
-
-title: Class 'ezxFormToken' not found
-
-* Usually found with fresh installations involving legacy extensions
-* Regenerate Autoloads
-
-<pre class="prettyprint" data-lang="bash">
-$ cd ezpublish_legacy
-$ php bin/php/ezpgenerateautoloads.php -e -p
-</pre>
-
----
-
-title: Pitfalls
-subtitle: Avoid the traps...
-class: segue dark nobackground
-
----
-
-title: Memory limit exceeded in DEV mode
-
-* DEV mode takes a lot of memory
-* Stash Logging is the worst
-* Disable Stash Logging in ezpublish.yml
-
-<pre class="prettyprint" data-lang="yml">
-stash:
-    <b>logging: false</b>
-    caches:
-        default:
-            handlers:
-                - FileSystem
-            inMemory: true
-            registerDoctrineAdapter: false
-</pre>
-
----
-
-title: 414 Request-URI Too Long
-
-When doing subrequests, particularly ESI or Hinclude ones, current SiteAccess is transmitted in a serialized form, with its matcher. With a large number of configured SiteAccesses using Map\Host or Map\URI matcher (around 40, which is not uncommon for a multi-national, multi-lingual site) the URL can exceed the size of 8192 Bytes which most servers accept. As a result, the ESI/Hinclude call fails.
-
-* Fixed in Version 5.3.3 (2014.07)
-* <https://jira.ez.no/browse/EZP-23168>
-* <https://github.com/ezsystems/ezpublish-kernel/pull/949>
-
----
 
 title: Multi-Site/Multi-Repository Setup
 subtitle:
@@ -768,116 +715,17 @@ Disadvantages:
 ---
 
 title: Multi-Site/Multi-Repository Setup in eZ 5
+build_lists: fade
 
-First Approach (proven in production)
 
-* Use different `ezpublish` app directories to host the different sites
+*First Approach (proven in production and depreciated)*
 
-Second approach (under development)
+*  *Use different ezpublish app directories to host the different sites*
 
-* Use `CJW MultiSiteBundle`
 
----
+**Second approach (proven in production)**
 
-title: Directory structure - Multi-Site-Setup (old)
-
-<pre class="">
-ezpublish                &lt;-- not used
-ezpublish_legacy
-&#8990;extension
- &#8990;site_customer          &lt;-- each customer has its own extension and database
- &#8990;site_customertwo
-&#8990;var
- &#8990;site_customer          &lt;-- each customer has its own var directory
- &#8990;site_customertwo
-site_customer            &lt;-- each customer has its own Symfony app
-site_customertwo
-src
-&#8990;CjwNetwork
- &#8990;SiteCustomerBundle     &lt;-- each customer has its own bundle
- &#8990;SiteCustomertwoBundle
-</pre>
-
----
-
-title: Multi-Site-Setup (old) Detail ezpublish_legacy
-
-<pre class="">
-ezpublish_legacy
-&#8990;extension
- &#8990;site_customer          &lt;-- each customer has its own extension
-  &#8990;classes
-  &#8990;design
-  &#8990;modules
-  &#8990;settings
-   &#8990;site.ini
-    &#8990;[DatabaseSettings]  &lt;-- each customer has its own database
-     &#8990;Database=database_site_customer
- &#8990;site_customertwo
-  &#8990;[...]
-  &#8990;settings
-   &#8990;site.ini
-    &#8990;[DatabaseSettings]
-     &#8990;Database=database_site_customertwo
-&#8990;var
- &#8990;site_customer          &lt;-- each customer has its own var directory
- &#8990;site_customertwo
-</pre>
-
----
-
-title: Detail site_customer App - Multi-Site-Setup (old)
-
-<pre class="">
-site_customer
-&#8990;autoload.php
-&#8990;bootstrap.php.cache
-&#8990;cache
-&#8990;check.php
-&#8990;config    &lt;-- all yml files like ezpublish folder, (to improve)
- &#8990;config.yml
- &#8990;ezpublish.yml
-&#8990; parameters.yml
-&#8990;console
-&#8990;logs
-&#8990;phpunit.xml.dist
-&#8990;Resources
-&#8990;sessions
-&#8990;SiteCjwbaseCache.php
-&#8990;SiteCjwbaseKernel.php
-&#8990;SymfonyRequirements.php
-</pre>
-
----
-
-title: Scripts on Shell - Multi-Site-Setup (old)
-
-<pre class="prettyprint" data-lang="bash">
-# Generate symlinks
-php site_customer/console assets:install --symlink web
-php site_customer/console ezpublish:legacy:assets_install --symlink web
-
-# Clear Cache
-php site_customer/console --env=prod cache:clear
-
-# Dump assets
-php site_customer/console assetic:dump --env=prod web
-
-# Run cronjobs
-php site_customer/console ezpublish:legacy:script runcronjobs.php --siteaccess customer_user_de cjw_newsletter
-</pre>
-
----
-
-title: Multiple Apps: Multi-Site-Setup (old)
-build_lists: true
-
-* You can use one development environment with many projects
-* You can use one or more production servers  or
-* easily check out customer to different servers
-* all customer are encapsulated apps
-* solid and proven for more than 1,5 years
-* Examples ...
+* Use TODO ab hier bitte überarbeiten: `CJW MultiSiteBundle`
 
 ---
 

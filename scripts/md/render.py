@@ -51,6 +51,10 @@ def postprocess_html(html, metadata):
   if metadata.get('build_lists') and metadata['build_lists'] == 'true':
     html = html.replace('<ul>', '<ul class="build">')
     html = html.replace('<ol>', '<ol class="build">')
+  if metadata.get('build_lists') and metadata['build_lists'] == 'fade':
+    html = html.replace('<ul>', '<ul class="build fade">')
+    html = html.replace('<ol>', '<ol class="build fade">')
+    html = html.replace('<li>', '<li class="fade">')
   return html
 
 if __name__ == '__main__':

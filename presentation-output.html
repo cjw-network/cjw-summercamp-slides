@@ -99,7 +99,7 @@ URL: https://code.google.com/p/io-2012-slides
   
     <hgroup>
       <h2>Who is in the audience?</h2>
-      <h3>Let me know you better ...</h3>
+      <h3>Let us know you better ...</h3>
     </hgroup>
     <article ><ul class="build">
 <li>Who is coming from the eZ World?</li>
@@ -119,10 +119,10 @@ URL: https://code.google.com/p/io-2012-slides
     <article ><p>Things we would like to discuss:</p>
 <ul class="build">
 <li>Reasons for not waiting any more</li>
-<li>b</li>
-<li>c</li>
-<li>d</li>
-<li>MultiSite Setup</li>
+<li>Run legacy only</li>
+<li>Run Symfony only</li>
+<li></li>
+<li>Multi-Site/Multi-Repository Setup</li>
 </ul></article>
  
 </slide>
@@ -159,7 +159,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>many security and bug fixes</li>
 <li>TWIG for new templates and fallback to old templates when needed</li>
 <li>easy to extend with Symfony bundles, there are more than 2500 on e.g. <a href="http://knpbundles.com/">http://knpbundles.com/</a></li>
-<li>switch to responsive webdesign and make it mobile first</li>
+<li>switch to responsive web design and make it mobile first</li>
 </ul></article>
  
 </slide>
@@ -172,9 +172,26 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article ><ul class="build">
 <li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
-<li>many fixes are in the legacy bridge</li>
-<li>newer versions are pre alpha</li>
-<li></li>
+<li>but many fixes are in the legacy bridge</li>
+<li>but newer versions are pre alpha</li>
+<li>but there is no real save version to switch</li>
+<li>solution take our cjwpublish and help to keep it fresh</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Which version to use?</h2>
+      <h3>We need a version as a stable base for the next 4 years</h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
+<li>but many fixes are in the legacy bridge</li>
+<li>but newer versions are pre alpha</li>
+<li>but there is no real save version to switch</li>
+<li>solution take our cjwpublish and help to keep it fresh</li>
 </ul></article>
  
 </slide>
@@ -183,7 +200,7 @@ URL: https://code.google.com/p/io-2012-slides
   
     <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Good Practice</h2>
+      <h2>Run legacy only</h2>
       <h3></h3>
     </hgroup>
   
@@ -192,10 +209,38 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Team up with a Symfony Crack</h2>
-      <h3></h3>
+      <h2>eZ Publish Legacy</h2>
+      <h3>We need a version as a stable base for the next 4 years</h3>
     </hgroup>
     <article ><ul class="build">
+<li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
+<li>but many fixes are in the legacy bridge</li>
+<li>but newer versions are pre alpha</li>
+<li>but there is no real save version to switch</li>
+<li>solution take our cjwpublish and help to keep it fresh</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Run Symfony only</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>title: Team up with a Symfony Crack
+build_lists: true</p>
+<ul>
 <li>To be honest: as eZ 4 developers, we are complete novices in eZ 5</li>
 <li>It's easier for a Smyfony Crack to learn eZ than other way round</li>
 <li>Symfony community is hungry for a CMS, so watch out for new competition</li>
@@ -868,150 +913,16 @@ system:
  
 </slide>
 
-<slide class="segue dark nobackground" >
-  
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Debugging</h2>
-      <h3>Coping with blank screens</h3>
-    </hgroup>
-  
-</slide>
-
 <slide  >
   
     <hgroup>
-      <h2>Blank screen, "503 Service not available"</h2>
+      <h2></h2>
       <h3></h3>
     </hgroup>
-    <article ><ul>
-<li>PHP errors (Syntax error, Memory, Outdated Autoloads, ...)</li>
-<li>
-<p>Configuration errors (DB connection, ...)</p>
-</li>
-<li>
-<p>Switch to DEV mode for better debugging</p>
-</li>
-<li>Check the log files
-<pre>
-    Apache/PHP Log
-    ezpublish/logs/&lt;env&gt;.log
-    ezpublish_legacy/var/log/*
-    ezpublish_legacy/var/&lt;siteaccess&gt;/log/*
-</pre></li>
-<li>Check write permissions on log files!</li>
-</ul></article>
+    <article ><p>title: Multi-Site/Multi-Repository Setup
+subtitle:
+class: segue dark nobackground</p></article>
  
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>TwigBundle:Exception:error500.html.twig</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>NEVER a Twig error!</li>
-<li>
-<p>Caused by response 500 "Internal Server Error" and missing error template</p>
-</li>
-<li>
-<p>Checks as before</p>
-</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Twig Exception: Invalid variation "&lt;variation&gt;"</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Caused by problems when accessing images</p>
-<ul>
-<li>Check if the file exists</li>
-<li>Check permissions on <code>ezpublish_legacy/var/&lt;siteaccess&gt;/storage</code></li>
-<li>Check log files</li>
-<li>Clear cache</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Class 'ezxFormToken' not found</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>Usually found with fresh installations involving legacy extensions</li>
-<li>Regenerate Autoloads</li>
-</ul>
-<pre class="prettyprint" data-lang="bash">
-$ cd ezpublish_legacy
-$ php bin/php/ezpgenerateautoloads.php -e -p
-</pre></article>
- 
-</slide>
-
-<slide class="segue dark nobackground" >
-  
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Pitfalls</h2>
-      <h3>Avoid the traps...</h3>
-    </hgroup>
-  
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Memory limit exceeded in DEV mode</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>DEV mode takes a lot of memory</li>
-<li>Stash Logging is the worst</li>
-<li>Disable Stash Logging in ezpublish.yml</li>
-</ul>
-<pre class="prettyprint" data-lang="yml">
-stash:
-    <b>logging: false</b>
-    caches:
-        default:
-            handlers:
-                - FileSystem
-            inMemory: true
-            registerDoctrineAdapter: false
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>414 Request-URI Too Long</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>When doing subrequests, particularly ESI or Hinclude ones, current SiteAccess is transmitted in a serialized form, with its matcher. With a large number of configured SiteAccesses using Map\Host or Map\URI matcher (around 40, which is not uncommon for a multi-national, multi-lingual site) the URL can exceed the size of 8192 Bytes which most servers accept. As a result, the ESI/Hinclude call fails.</p>
-<ul>
-<li>Fixed in Version 5.3.3 (2014.07)</li>
-<li><a href="https://jira.ez.no/browse/EZP-23168">https://jira.ez.no/browse/EZP-23168</a></li>
-<li><a href="https://github.com/ezsystems/ezpublish-kernel/pull/949">https://github.com/ezsystems/ezpublish-kernel/pull/949</a></li>
-</ul></article>
- 
-</slide>
-
-<slide class="segue dark nobackground" >
-  
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Multi-Site/Multi-Repository Setup</h2>
-      <h3></h3>
-    </hgroup>
-  
 </slide>
 
 <slide  >
@@ -1044,136 +955,13 @@ stash:
       <h2>Multi-Site/Multi-Repository Setup in eZ 5</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>First Approach (proven in production)</p>
-<ul>
-<li>Use different <code>ezpublish</code> app directories to host the different sites</li>
+    <article ><p><em>First Approach (proven in production and depreciated)</em></p>
+<ul class="build fade">
+<li class="fade"><em>Use different ezpublish app directories to host the different sites</em></li>
 </ul>
-<p>Second approach (under development)</p>
-<ul>
-<li>Use <code>CJW MultiSiteBundle</code></li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Directory structure - Multi-Site-Setup (old)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="">
-ezpublish                &lt;-- not used
-ezpublish_legacy
-&#8990;extension
- &#8990;site_customer          &lt;-- each customer has its own extension and database
- &#8990;site_customertwo
-&#8990;var
- &#8990;site_customer          &lt;-- each customer has its own var directory
- &#8990;site_customertwo
-site_customer            &lt;-- each customer has its own Symfony app
-site_customertwo
-src
-&#8990;CjwNetwork
- &#8990;SiteCustomerBundle     &lt;-- each customer has its own bundle
- &#8990;SiteCustomertwoBundle
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Multi-Site-Setup (old) Detail ezpublish_legacy</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="">
-ezpublish_legacy
-&#8990;extension
- &#8990;site_customer          &lt;-- each customer has its own extension
-  &#8990;classes
-  &#8990;design
-  &#8990;modules
-  &#8990;settings
-   &#8990;site.ini
-    &#8990;[DatabaseSettings]  &lt;-- each customer has its own database
-     &#8990;Database=database_site_customer
- &#8990;site_customertwo
-  &#8990;[...]
-  &#8990;settings
-   &#8990;site.ini
-    &#8990;[DatabaseSettings]
-     &#8990;Database=database_site_customertwo
-&#8990;var
- &#8990;site_customer          &lt;-- each customer has its own var directory
- &#8990;site_customertwo
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Detail site_customer App - Multi-Site-Setup (old)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="">
-site_customer
-&#8990;autoload.php
-&#8990;bootstrap.php.cache
-&#8990;cache
-&#8990;check.php
-&#8990;config    &lt;-- all yml files like ezpublish folder, (to improve)
- &#8990;config.yml
- &#8990;ezpublish.yml
-&#8990; parameters.yml
-&#8990;console
-&#8990;logs
-&#8990;phpunit.xml.dist
-&#8990;Resources
-&#8990;sessions
-&#8990;SiteCjwbaseCache.php
-&#8990;SiteCjwbaseKernel.php
-&#8990;SymfonyRequirements.php
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Scripts on Shell - Multi-Site-Setup (old)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="bash">
-# Generate symlinks
-php site_customer/console assets:install --symlink web
-php site_customer/console ezpublish:legacy:assets_install --symlink web
-
-# Clear Cache
-php site_customer/console --env=prod cache:clear
-
-# Dump assets
-php site_customer/console assetic:dump --env=prod web
-
-# Run cronjobs
-php site_customer/console ezpublish:legacy:script runcronjobs.php --siteaccess customer_user_de cjw_newsletter
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Multiple Apps: Multi-Site-Setup (old)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul class="build">
-<li>You can use one development environment with many projects</li>
-<li>You can use one or more production servers  or</li>
-<li>easily check out customer to different servers</li>
-<li>all customer are encapsulated apps</li>
-<li>solid and proven for more than 1,5 years</li>
-<li>Examples ...</li>
+<p><strong>Second approach (proven in production)</strong></p>
+<ul class="build fade">
+<li class="fade">Use TODO ab hier bitte überarbeiten: <code>CJW MultiSiteBundle</code></li>
 </ul></article>
  
 </slide>
