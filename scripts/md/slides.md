@@ -243,11 +243,12 @@ build_lists: true
 
 title: Pagination (was Google navigator)
 subtitle: 
-build_lists: true
 
-<img src="images/pagination.png" alt="" width="529" style="margin-top:-30px">
 
-Twig Template: <https://github.com/cjw-network/CjwPublishToolsBundle/blob/master/Resources/views/parts/navigator.html.twig>
+<img src="images/pagination.png" alt="" width="529" style="margin-top:-50px">
+
+- Twig Template
+- <https://github.com/cjw-network/CjwPublishToolsBundle/blob/master/Resources/views/parts/navigator.html.twig>
 
 ---
 
