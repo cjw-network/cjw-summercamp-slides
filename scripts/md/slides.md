@@ -285,7 +285,32 @@ class: smaller
 
 ---
 
+title: TODO Multi language
+subtitle: 
+build_lists: true
 
+<img src="images/ed-de-01.png.png" alt="" width="612" style="margin-top:-30px">
+
+
+---
+
+title: TODO Contact Form
+subtitle: 
+build_lists: true
+
+
+
+
+---
+
+title: TODO Frontend editing
+subtitle: 
+build_lists: true
+
+
+
+
+---
 
 title: TODO, aus 2014 Multi-Site/Multi-Repository Setup
 subtitle:
