@@ -29,12 +29,12 @@ URL: https://code.google.com/p/io-2012-slides
 
 <slide class="logoslide nobackground">
   <article class="flexbox vcenter">
-    <span><img src="images/cjwlogo.png"></span>
+    <span><img src="images/cjwlogo.png" class="noshadow"></span>
   </article>
 </slide>
 
 <slide class="title-slide segue nobackground">
-  <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+  <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
   <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
   <hgroup class="auto-fadein">
     <h1 data-config-title><!-- populated from slide_config.json --></h1>
@@ -81,7 +81,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3></h3>
     </hgroup>
     <article ><ul class="build">
-<li>There are still many eZ Publish legacy sites </li>
+<li>There are still many (too much) eZ Publish legacy sites </li>
 <li>eZ Publish 5.4 / 2014.11 is supported until May 2019</li>
 <li>So there is a stable business base for the next 4 years</li>
 <li>And since one year in internet is seven years in real live, 28 years of best business!</li>
@@ -113,7 +113,7 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>TODO Agenda</h2>
+      <h2>DOING Agenda</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Things we would like to discuss:</p>
@@ -121,10 +121,20 @@ URL: https://code.google.com/p/io-2012-slides
 <li>Reasons for not waiting any more</li>
 <li>Run legacy only</li>
 <li>Run Symfony only</li>
+<li>Your fast (easy) way to pure Symfony</li>
 <li></li>
-<li>Multi-Site/Multi-Repository Setup</li>
 </ul></article>
  
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Why waiting?</h2>
+      <h3>Pro and cons</h3>
+    </hgroup>
+  
 </slide>
 
 <slide  >
@@ -135,14 +145,14 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article ><ul class="build">
 <li>update / upgrade - but still no new feature for editors</li>
-<li>many security fixes - but often part of maintenance support</li>
 <li>
-<p>new feature mobile editing - too long to wait for: in eZ Platform 6</p>
+<p>many security fixes - but often part of maintenance support</p>
 </li>
 <li>
 <p>Relaunch: Make responsive, look at <a href="http://getbootstrap.com">http://getbootstrap.com</a> or <a href="http://foundation.zurb.com/">http://foundation.zurb.com/</a></p>
 </li>
 <li>Relaunch: Mobile first, it is coming to marketing people</li>
+<li>new feature mobile editing</li>
 <li>Do you have one more?</li>
 </ul></article>
  
@@ -172,33 +182,17 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article ><ul class="build">
 <li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
-<li>but many fixes are in the legacy bridge</li>
-<li>but newer versions are pre alpha</li>
-<li>but there is no real save version to switch</li>
-<li>solution take our cjwpublish and help to keep it fresh</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Which version to use?</h2>
-      <h3>We need a version as a stable base for the next 4 years</h3>
-    </hgroup>
-    <article ><ul class="build">
-<li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
-<li>but many fixes are in the legacy bridge</li>
-<li>but newer versions are pre alpha</li>
-<li>but there is no real save version to switch</li>
-<li>solution take our cjwpublish and help to keep it fresh</li>
+<li>but many fixes are in the legacy bridge (-)</li>
+<li>but newer versions are pre alpha (+)</li>
+<li>but there is no real save version to switch (-)</li>
+<li>solution take our cjwpublish and help to keep it fresh (+)</li>
 </ul></article>
  
 </slide>
 
 <slide class="segue dark nobackground" >
   
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+    <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
     <hgroup class="auto-fadein">
       <h2>Run legacy only</h2>
       <h3></h3>
@@ -209,22 +203,24 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>eZ Publish Legacy</h2>
-      <h3>We need a version as a stable base for the next 4 years</h3>
+      <h2>Run legacy only</h2>
+      <h3>Short introduction</h3>
     </hgroup>
     <article ><ul class="build">
-<li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
-<li>but many fixes are in the legacy bridge</li>
-<li>but newer versions are pre alpha</li>
-<li>but there is no real save version to switch</li>
-<li>solution take our cjwpublish and help to keep it fresh</li>
+<li>if you only need the bug fixes and security patches in legacy</li>
+<li>our arguments won't convince you or your customer</li>
+<li>the installation has more than 150 extensions</li>
+<li>then link your requests into the legacy folder</li>
+<li>go the upgrade path <a href="https://doc.ez.no/display/EZP/Upgrade">https://doc.ez.no/display/EZP/Upgrade</a></li>
+<li>and read more <a href="https://doc.ez.no/display/EZP/Legacy+code+and+features">https://doc.ez.no/display/EZP/Legacy+code+and+features</a></li>
+<li>but we advice you to go to "Run Symfony only"</li>
 </ul></article>
  
 </slide>
 
 <slide class="segue dark nobackground" >
   
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+    <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
     <hgroup class="auto-fadein">
       <h2>Run Symfony only</h2>
       <h3></h3>
@@ -235,441 +231,26 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2></h2>
+      <h2>Team up with a Symfony Crack</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>title: Team up with a Symfony Crack
-build_lists: true</p>
-<ul>
+    <article ><ul class="build">
 <li>To be honest: as eZ 4 developers, we are complete novices in eZ 5</li>
 <li>It's easier for a Smyfony Crack to learn eZ than other way round</li>
 <li>Symfony community is hungry for a CMS, so watch out for new competition</li>
 <li>But @Symfony cracks: It's not easy: an eZ Publish and CMS expert will reduce your risk</li>
 <li>And will make your content architecture better and more maintainable</li>
+<li><strong>OR take the shortcut for integrators</strong></li>
 </ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Think in MVC</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul class="build">
-<li>A radical different thinking</li>
-<li>eZ 4 mangled all together in the TPL -&gt; the view implemented the logic (fetch)</li>
-<li>Symfony enforces a clean separation, from routing to the controller to the rendering of the view</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>MVC Blackbox</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><img src="images/mvc.jpg" alt="" width="800" style="margin-top:-50px"></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Think in Bundles</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><em>What is a bundle?</em></p>
-<ul class="build">
-<li>Use a least one bundle per site</li>
-<li>Split your application in different bundles (site specific, functional, ...)</li>
-<li>Reuse your code: create and maintain with love a Base Bundle with general functions</li>
-<li>
-<p>Refactor it frequently as you learn and the product evolves</p>
-</li>
-<li>
-<p>Creating bundles is easy, don't work in the DemoBundle ;-)
-<li>
-<pre class="prettyprint" data-lang="bash">
-$ php ezpublish/console generate:bundle
-</pre>
-</li></p>
-</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Organize your config files</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>The standard eZ installation is a mess...</p>
-<p>... and the DemoBundle is only slowly becoming a source of good practice</p>
-<p><em>How do YOU handle this?</em></p>
-<ul class="build">
-<li>keep config in <code>ezpublish/config</code> as general as possible</li>
-<li>it should merely describe your environment, not the application</li>
-<li>move all site/function specific settings to the bundle</li>
-</ul></article>
- 
-</slide>
-
-<slide class="smaller" >
-  
-    <hgroup>
-      <h2>Keep ezpublish.yml small (1)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>ezpublish/config/ezpublish.yml</code></p>
-<pre class="prettyprint" data-lang="yml">
-imports:
-    - {resource: "@CjwExampleBundle/Resources/config/ezpublish.yml"}
-ezpublish:
-    siteaccess:
-        default_siteaccess:<b>%cjw.site%</b>_user
-        list:
-        groups:
-            <b>default_group</b>:
-        match:
-            \Cjw\MultiSiteBundle\Matcher\MapHost:
-                www.%cjw.site%.ch: %cjw.site%_user
-                admin.%cjw.site%.ch: %cjw.site%_admin
-    repositories:
-        <b>default_repository</b>:
-            engine: legacy
-            connection: <b>default_connection</b>
-</pre></article>
- 
-</slide>
-
-<slide class="smaller" >
-  
-    <hgroup>
-      <h2>Keep ezpublish.yml small (2)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="yml">
-    system:
-        default_group:
-            repository: default_repository
-            var_dir: var/%cjw.site%
-            languages:
-                - ger-DE
-        %cjw.site%_user:
-            legacy_mode: false
-            languages:
-                - ger-DE
-            content:
-                view_cache: true
-                ttl_cache: true
-                default_ttl: 3600
-        %cjw.site%_admin:
-            legacy_mode: true
-            ...
-stash:
-    ...
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Keep ezpublish.yml small (3)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Can even be shorter - get inspiration from <a href="https://github.com/lolautruche/metalfrance">https://github.com/lolautruche/metalfrance</a></p>
-<p>Extras:</p>
-<ul>
-<li>use parameters</li>
-<li>standardize site access names, groups, repository names</li>
-</ul>
-<p><code>ezpublish/config/parameters.yml</code></p>
-<pre class="prettyprint" data-lang="yml">
-parameters:
-    ...
-    cjw.site: frb
-</pre>
-
-<p><em>Note: prepending configuration does not work well with parameters</em></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Config Files in Bundle</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>We keep them in a separate directory and name them as in good old eZ...</p>
-<pre>
-ExampleBundle
-&#8990; Resources
-  &#8990; config
-    &#8990; ezpublish
-        image.yml
-        override.yml
-      ezpublish.yml         &lt;-- includes files from ./ezpublish
-      parameters.yml
-      routing.yml
-      services.yml
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Controllers</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>After several tries, we ended up with...</p>
-<ul class="build">
-<li>Basically one controller per full view</li>
-<li>Separate controllers for navigation etc.</li>
-<li>
-<p>Consider caching (TTL, X-Location Header)</p>
-</li>
-<li>
-<p><strong>Recommended: Move business logic to separate model</strong></p>
-</li>
-<li>Retrieve all needed data (location, children, ...)</li>
-<li>Prepare the data for easy processing in the templates</li>
-</ul></article>
- 
-</slide>
-
-<slide class="smaller" >
-  
-    <hgroup>
-      <h2>Ways to Fetch Content</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul class="build">
-<li>LocationService::loadLocation( $id ) --&gt; location</li>
-<li>
-<p>ContentService::loadContent( $id )   --&gt; content</p>
-</li>
-<li>
-<p>SearchService::findContent( $query ) --&gt; list of content</p>
-</li>
-<li>
-<p>SearchService::findLocations( $query ) --&gt; list of location</p>
-</li>
-<li>
-<p>LocationService::loadLocationChildren( $location ) --&gt; list of location</p>
-</li>
-<li>
-<p>Legacy fetch functions</p>
-</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>SearchService::findContent()</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>The only <code>SearchService</code> function you will find in <code>DemoBundle</code> ...</p>
-<ul class="build">
-<li>returns full <code>content</code> objects with ALL attributes in ALL languages</li>
-<li>does not work <s>well</s> with multiple locations</li>
-<li>
-<p>no <code>as_objects</code> flag as in eZ 4</p>
-</li>
-<li>
-<p>scales very badly</p>
-</li>
-<li>fetching a content tree with 116 locations took 30 seconds</li>
-<li>most of the time is spent in manipulating the SQL result in PHP</li>
-<li>
-<p>Another test: 24 hits, PHP array 44'880 rows with 39 elements each, highly redundant</p>
-</li>
-<li>
-<p><a href="http://share.ez.no/blogs/donat-fritschy/searchservice-performance">http://share.ez.no/blogs/donat-fritschy/searchservice-performance</a></p>
-</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>SearchService::findLocations()</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><strong>Available from 2014.05 / 5.3 only</strong></p>
-<p>Roughly equivalent to good old <code>fetch( 'content', 'list' )</code></p>
-<ul class="build">
-<li>returns <code>location</code> objects with <code>contentInfo</code> only</li>
-<li>usually sufficient for building a menu</li>
-<li>use <code>ContentService::loadContent()</code> to fetch whole object</li>
-<li>Performance lower than legacy, but acceptable</li>
-<li>fetching a content tree with 116 locations took &lt; 1 second</li>
-<li>scales very well</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>LocationService::loadLocationChildren()</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Think of <code>LocationService::loadLocationChildren()</code> as primarily intended for administration interface. Has no filtering capabilities.</p>
-<p>Further reading:</p>
-<p><a href="http://www.netgenlabs.com/Blog/Fetching-content-in-eZ-Publish-5-using-Search-service">http://www.netgenlabs.com/Blog/Fetching-content-in-eZ-Publish-5-using-Search-service</a></p></article>
- 
-</slide>
-
-<slide class="smaller" >
-  
-    <hgroup>
-      <h2>Legacy Fetch Functions</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="php">
-use eZFunctionHandler;
-...
-$mySearchResults = $this->getLegacyKernel()->runCallback(
-    function () use ( $searchPhrase, $sort, $contentTypeIdenfiers )
-    {
-        // eZFunctionHandler::execute is the equivalent for a legacy template fetch function
-        // The following is the same than fetch( 'ezfind', 'search', hash(...) )
-        return eZFunctionHandler::execute(
-            'ezfind',
-            'search',
-            array(
-                'query'     => $searchPhrase,
-                'sort_by'   => $sort,
-                'class_id'  => $contentTypeIdenfiers
-            )
-        );
-    }
-);
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Templates</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>How to transform a full view TPL with children to Symfony?</p>
-<p><code>full/folder.tpl</code></p>
-<pre class="prettyprint" data-lang="tpl">
-&lt;h1&gt;{$node.data_map.title.content|wash()}&lt;/h1&gt;
-{attribute_view_gui attribute=$node.data_map.short_description}
-...
-
-{def $list_items=fetch( 'content', 'list', ... ) ) }
-
-{foreach $list_items as $child}
-    {node_view_gui view=line content_node=$child}
-{/foreach}
-</pre></article>
- 
-</slide>
-
-<slide class="smaller" >
-  
-    <hgroup>
-      <h2>Moving to TWIG</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>Resources/view/full.html.twig</code>
-<pre class="prettyprint" data-lang="Twig">
-&lt;h1&gt;{{ ez_render_field( content, 'title') }}&lt;/h1&gt;
-{{ ez_render_field( content, 'short_description') }}
-...
-{{ render( controller( "CjwBaseBundle:Default:subItems", {'locationId': location.id }) ) }}
-</pre>
-<code>Controller/DefaultController.php</code>
-<pre class="prettyprint" data-lang="php">
-public function subItemsAction( $locationId )
-{
-    $response = new Response;
-    $locationList = $this-&gt;fetchLocationListIncludingContentTypes( $locationId, array() );
-    return $this-&gt;render(
-                "CjwBaseBundle::sub_items.html.twig",
-                    array( "locationList" =&gt; $locationList ),
-                    $response
-    );
-}
-</pre></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Moving to TWIG</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>Resources/view/sub_items.html.twig</code>
-<pre class="prettyprint" data-lang="Twig">
-{% for location in locationList %}
-    {{ render( controller( 'ez_content:viewLocation',
-       {'locationId': location.id, 'viewType': 'line'} ))  }}
-{% endfor %}
-</pre></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Our approach</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>Basically one template per full view</li>
-<li>Render children directly in the full view template</li>
-<li>Generalized full and line view templates for the easy stuff</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>How to organize Templates?</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>The Symfony way...</p>
-<pre>
-views
-&#8990; Customer
-    CustomerDetail.html.twig
-&#8990; Product
-</pre>
-
-<p>The classic eZ way...</p>
-<pre>
-views
-&#8990; full
-    customer.html.twig
-&#8990; line
-</pre>
-
-<p>Two approaches, both valid. Follow your taste.</p></article>
  
 </slide>
 
 <slide class="segue dark nobackground" >
   
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+    <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
     <hgroup class="auto-fadein">
-      <h2>eZ View Cache vs. HTTP Caching</h2>
-      <h3></h3>
+      <h2>CjwPublishToolsBundle</h2>
+      <h3>Your easy way to eZ Publish Symfony</h3>
     </hgroup>
   
 </slide>
@@ -677,239 +258,156 @@ views
 <slide  >
   
     <hgroup>
-      <h2>eZ View Caching (Legacy)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>When the pagelayout is rendered, the <code>{$module_result.content}</code> part will be replaced with the actual output. If view caching is enabled, the entire result of the module will be cached. This means that the contents of the "module_result" variable will be put into a cache file (...)</p>
-<p>When a new version (...) of an object is published, the system will automatically clear the view cache for the following items:</p>
-<ul>
-<li>All published nodes of the object</li>
-<li>The parent nodes</li>
-<li>Related nodes (keywords, object relations)</li>
-</ul>
-<p><a href="https://doc.ez.no/eZ-Publish/Technical-manual/4.x/Features/View-caching">https://doc.ez.no/eZ-Publish/Technical-manual/4.x/Features/View-caching</a></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>HTTP Expiration and Validation (Symfony)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>The HTTP specification defines two caching models:</p>
-<ul class="build">
-<li>With the <strong>expiration model</strong>, you simply specify how long a response should be considered "fresh" by including a Cache-Control and/or an Expires header. Caches that understand expiration will not make the same request until the cached version reaches its expiration time and becomes "stale";</li>
-<li>When pages are really dynamic (i.e. their representation changes often), the <strong>validation model</strong> is often necessary. With this model, the cache stores the response, but asks the server on each request whether or not the cached response is still valid. The application uses a unique response identifier (the Etag header) and/or a timestamp (the Last-Modified header) to check if the page has changed since being cached.</li>
-</ul>
-<p><a href="http://symfony.com/doc/current/book/http_cache.html">http://symfony.com/doc/current/book/http_cache.html</a></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>In Short (and much simplified...)</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>eZ View Cache caches <strong>content</strong> and <strong>content fragments</strong></p>
-<ul>
-<li>Standard TTL is 2 hours</li>
-<li>Is purged on content modifications (with smart cache clearing rules)</li>
-</ul>
-<p>Symfony's HTTP Cache caches <strong>requests</strong></p>
-<ul>
-<li>eZ uses Expiration model by default</li>
-<li>Standard TTL is 60 seconds (86400 for tree menu!)</li>
-<li>Symfony Cache is purged from backend</li>
-</ul>
-<p>Let's dive in a bit deeper...</p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>ez 4 Cache Directives</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Code from <code>ezpublish_legacy/kernel/private/classes/ezpkernelweb.php</code></p>
-<pre class="prettyprint" data-lang="php">
-// send header information
-foreach (
-    eZHTTPHeader::headerOverrideArray( $this->uri ) +
-    array(
-        <b>'Expires' => 'Mon, 26 Jul 1997 05:00:00 GMT',
-        'Last-Modified' => gmdate( 'D, d M Y H:i:s' ) . ' GMT',
-        'Cache-Control' => 'no-cache, must-revalidate',
-        'Pragma' => 'no-cache',</b>
-        ...
-      ) as $key => $value
-)
-{
-    header( $key . ': ' . $value );
-}
-</pre>
-
-<p><strong>This guarantees that every request is handled by eZ</strong></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>eZ 5 Cache Directives</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Code from <code>vendor/ezsystems/demobundle/EzSystems/DemoBundle/Controller/DemoController.php</code></p>
-<pre class="prettyprint" data-lang="php">
-// Setting HTTP cache for the response to be public and with a TTL of 1 day.
-$response = new Response;
-$response->setPublic();
-$response->setSharedMaxAge( 86400 );
-// Menu will expire when top location cache expires.
-$response->headers->set( 'X-Location-Id', $rootLocationId );
-// Menu might vary depending on user permissions, so make the cache vary on the user hash.
-$response->setVary( 'X-User-Hash' );
-</pre>
-
-<p><strong>This effectively sets the Response free, out of the reach of eZ</strong></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Emulating eZ 4 Cache behaviour in eZ 5</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>This patch to <code>index.php</code> disables client and proxy caching without sacrificing the benefits of the Symfony HTTP cache. Use at own risk!</p>
-<pre class="prettyprint" data-lang="php">
-$response = $kernel->handle( $request );
-<b>
-// Emulate eZ 4 cache control
-$response->headers->set( 'Cache-Control', 'no-cache, must-revalidate' );
-</b>
-$response->send();
-$kernel->terminate( $request, $response );
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Cache Recommendations</h2>
-      <h3></h3>
+      <h2>CjwPublishToolsBundle</h2>
+      <h3>for integrators of small to medium sites</h3>
     </hgroup>
     <article ><ul class="build">
-<li>Read the specifications</li>
-<li>Use Shared Caches with caution</li>
-<li>Cave: <code>setTtl()</code> vs. <code>setClientTtl</code></li>
-<li>Set TTL as high as possible</li>
-<li>
-<p>Use Varnish</p>
-</li>
-<li>
-<p><a href="http://tools.ietf.org/html/rfc2616#page-74">http://tools.ietf.org/html/rfc2616#page-74</a></p>
-</li>
-<li><a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
+<li>He comes from front end design and speaks fluent HTML and CSS</li>
+<li>He has no problems with digging into template languages</li>
+<li>He prefers solutions with all needed functionality</li>
+<li>He wants to develop web sites fast and easy at low cost</li>
+<li><a href="https://github.com/cjw-network/CjwPublishToolsBundle">https://github.com/cjw-network/CjwPublishToolsBundle</a></li>
 </ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Treemenu</h2>
+      <h3>cjw_treemenu</h3>
+    </hgroup>
+    <article ><p><img src="images/treemenu.png" alt="" width="613" style="margin-top:-30px"></p>
+<li>
+<pre class="prettyprint" data-lang="Twig">
+{% set treemenu = cjw_treemenu( locationId, {
+                      'depth': '2',
+                      'offset': '1',
+                      'include': [ 'cjw_article', 'cjw_folder', 'cjw_feedback_form' ],
+                      'sortby': { 'LocationPriority': 'ASC' },
+                      'datamap': false } ) %}
+</pre>
+</li>
+
+<li>
+<pre class="prettyprint" data-lang="Twig">
+{% for item in treemenu %}
+    {{ ez_content_name( item.node.contentInfo ) }}   
+{% endfor %}
+</pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Breadcrumb</h2>
+      <h3>cjw_breadcrumb</h3>
+    </hgroup>
+    <article ><p><img src="images/breadcrumb.png" alt="" width="421" style="margin-top:-30px"></p>
+<li>
+<pre class="prettyprint" data-lang="Twig">
+{% set path = cjw_breadcrumb( locationId, { 'offset': '1',
+                                            'rootName': 'Home',
+                                            'separator': '' } ) %}
+{% for item in path.items %}   
+       {{ item.name }}        
+{% endfor %}
+</pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Folder with line view screenshot</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><img src="images/folder_with_line_view.png" alt="" width="527" style="margin-top:-30px"></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Folder with line view source code</h2>
+      <h3>cjw_fetch_content</h3>
+    </hgroup>
+    <article ><li>
+<pre class="prettyprint" data-lang="Twig">
+{% set listChildren = cjw_fetch_content( [ location.id ], { 'depth': '1',
+        'limit': listLimit,
+        'offset': listOffset,
+        'include': [ 'cjw_folder', 'cjw_article', 'cjw_folder_section', 'cjw_file'  ],
+        'language': [],
+        'datamap': false,
+        'count': true } )[ location.id ] %}
+</pre>
+</li>
+
+<li>
+<pre class="prettyprint" data-lang="Twig">        
+{% for child in listChildren['children'] %}
+    {#{{ render( controller( "ez_content:viewLocation", 
+                            {'location': child, 'viewType': 'line'} ) ) }}#}
+    {{ cjw_render_location( {'location': child, 'viewType': 'line'} )  }}
+
+{% endfor %}
+</pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pagination (was Google navigator)</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><img src="images/pagination.png" alt="" width="529" style="margin-top:-30px"></p>
+<p>Twig Template: <a href="https://github.com/cjw-network/CjwPublishToolsBundle/blob/master/Resources/views/parts/navigator.html.twig">https://github.com/cjw-network/CjwPublishToolsBundle/blob/master/Resources/views/parts/navigator.html.twig</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Article full view screenshot</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><img src="images/article_full_view.png" alt="" width="741" style="margin-top:-30px"></p></article>
  
 </slide>
 
 <slide class="smaller" >
   
     <hgroup>
-      <h2>Cache per User - User Hash Definer</h2>
+      <h2>Article full view source code</h2>
       <h3></h3>
     </hgroup>
-    <article ><p><code>src/Cjw/SiteCustomerBundle/Identity/UserHashDefiner.php</code>
-<pre class="prettyprint" data-lang="php">
-namespace Cjw\SiteCustomerBundle\Identity;
-use eZ\Publish\SPI\User\IdentityAware;
-use eZ\Publish\SPI\User\Identity;
-use eZ\Publish\API\Repository\Repository;
-class UserHashDefiner implements IdentityAware
-{
-    private $repository;
-    public function __construct(Repository $repository)
-    {
-        $this-&gt;repository = $repository;
-    }
-    public function setIdentity(Identity $identity)
-    {
-        $current_user = $this-&gt;repository-&gt;getCurrentUser();
-        $identity-&gt;setInformation('UserID', $current_user-&gt;contentInfo-&gt;id);
-    }
-}
-</pre></p></article>
- 
-</slide>
+    <article ><li>
+<pre class="prettyprint" data-lang="Twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+{% block content %}
 
-<slide  >
-  
-    <hgroup>
-      <h2>Cache per User - yml config</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>src/Cjw/SiteCustomerBundle/Ressources/config/services.yml</code></p>
-<pre class="prettyprint" data-lang="yml">
+    {% if content.fields.title is defined and not ez_is_field_empty( content, 'title' ) %}
+        {{ ez_field_value( content, 'title' ) }}
+    {% endif %}
 
-parameters:
-    cjw_site_customer.user_hash_definer.class: Cjw\SiteCustomerBundle\Identity\UserHashDefiner
+    {% if content.fields.short_description is defined and not ez_is_field_empty( content, 'short_description' ) %}
+        {{ ez_render_field( content, 'short_description' ) }}
+    {% endif %}
 
-services:
-    cjw_site_customer.user_hash_definer:
-        class: %cjw_site_customer.user_hash_definer.class%
-        tags:
-          - { name: ezpublish.identity_definer }
-        arguments: [@ezpublish.api.repository]
+    {% if content.fields.image is defined and not ez_is_field_empty( content, 'image' ) %}
+        {{ ez_render_field( content, 'image', 
+                    {parameters: {alias: 'medium', class: 'imageleft'}} ) }}
+    {% endif %}
 
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Cache per User - Controller</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>src/Cjw/SiteCustomerBundle/Controller/CjwController.php</code></p>
-<pre class="prettyprint" data-lang="php">
-
-    public function sectionInternalAction($locationId, $viewType, $layout = false, array $params = array())
-    {
-        $response = new Response();
-        $response->setPrivate();
-        $response->headers->set('X-Location-Id', $locationId);
-        $response->setVary('X-User-Hash');
-        return $response;
-    }
-</pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Cache per User - Location View Configuration</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>src/Cjw/SiteCustomerBundle/Ressources/config/ezpublish/override.yml</code></p>
-<pre class="prettyprint" data-lang="yml">
-
-system:
-    customer_user_de:
-        location_view:
-            full:
-                section_internal:
-                    controller:  "CjwSiteCustomerBundle:Cjw:sectionInternal"
-                    match:
-                        Identifier\Section: internal
-
-</pre></article>
+{% endblock %}
+</pre>
+</li></article>
  
 </slide>
 
@@ -919,7 +417,7 @@ system:
       <h2></h2>
       <h3></h3>
     </hgroup>
-    <article ><p>title: Multi-Site/Multi-Repository Setup
+    <article ><p>title: TODO, aus 2014 Multi-Site/Multi-Repository Setup
 subtitle:
 class: segue dark nobackground</p></article>
  
@@ -952,7 +450,7 @@ class: segue dark nobackground</p></article>
 <slide  >
   
     <hgroup>
-      <h2>Multi-Site/Multi-Repository Setup in eZ 5</h2>
+      <h2>TODO, aus 2014Multi-Site/Multi-Repository Setup in eZ 5</h2>
       <h3></h3>
     </hgroup>
     <article ><p><em>First Approach (proven in production and depreciated)</em></p>
@@ -969,7 +467,7 @@ class: segue dark nobackground</p></article>
 <slide  >
   
     <hgroup>
-      <h2>Introducing CJW MultiSiteBundle</h2>
+      <h2>TODO, aus 2014Introducing CJW MultiSiteBundle</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Although the first approach works fine, it has several drawbacks:</p>
@@ -990,7 +488,7 @@ class: segue dark nobackground</p></article>
 <slide  >
   
     <hgroup>
-      <h2>CJW MultiSiteBundle Features</h2>
+      <h2>TODO, aus 2014CJW MultiSiteBundle Features</h2>
       <h3></h3>
     </hgroup>
     <article ><ul class="build">
@@ -1009,7 +507,7 @@ class: segue dark nobackground</p></article>
 <slide  >
   
     <hgroup>
-      <h2>cjwpublish Directory</h2>
+      <h2>TODO, aus 2014cjwpublish Directory</h2>
       <h3></h3>
     </hgroup>
     <article ><p>The <code>cjwpublish</code> application directory sits next to the <code>ezpublish</code> directory.</p>
@@ -1028,7 +526,7 @@ cjwpublish
 <slide  >
   
     <hgroup>
-      <h2>Symfony's app directory is back</h2>
+      <h2>TODO, aus 2014Symfony's app directory is back</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Site Bundle Directory Layout</p>
@@ -1053,7 +551,7 @@ src
 <slide  >
   
     <hgroup>
-      <h2>Caveats</h2>
+      <h2>TODO, aus 2014Caveats</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Adjustments needed in <code>config.yml</code> to reflect different relative location of kernel</p>
@@ -1078,7 +576,7 @@ parameters:
 <slide  >
   
     <hgroup>
-      <h2>Project Status TODO</h2>
+      <h2>TODO, aus 2014 Project Status TODO</h2>
       <h3></h3>
     </hgroup>
     <article ><ul>
@@ -1119,7 +617,7 @@ parameters:
 
 <slide class="segue dark nobackground" >
   
-    <aside class="gdbar"><img src="images/cjwlogo_128.png"></aside>
+    <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
     <hgroup class="auto-fadein">
       <h2><a href="http://vote.netgenlabs.com/" style="color:#fff;">http://vote.netgenlabs.com/</a></h2>
       <h3>Please Vote!</h3>
@@ -1129,7 +627,7 @@ parameters:
 
 
 <slide class="thank-you-slide segue nobackground">
-  <aside class="gdbar right"><img src="images/cjwlogo_128.png"></aside>
+  <aside class="gdbar right"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
   <article class="flexbox vleft auto-fadein">
     <h2>&lt;Thank You!&gt;</h2>
     <p>Ekkehard D&ouml;rre<br>
