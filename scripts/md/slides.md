@@ -38,8 +38,6 @@ title: Who is in the audience?
 subtitle: Let us know you better ...
 build_lists: true
 
-- Who is coming from the eZ World?
-- Who is coming from the Symfony World?
 - Who has realized eZ Publish 5 sites (productive)?
 - Who has realized pure eZ Publish 5 sites (no legacy)?
 
@@ -61,6 +59,17 @@ Things we would like to discuss:
 title: Why waiting?
 subtitle: Pro and cons
 class: segue dark nobackground
+
+---
+
+title: What are the problems?
+subtitle: Still hard to start but we prepared a lot
+build_lists: true
+
+- no starting point: a good eZ Publish version like 4.7 is missing
+- many logic is in templates, everything new, everything different?
+- no multi site / multi repository setup
+- performance, performance, performance,
 
 ---
 
