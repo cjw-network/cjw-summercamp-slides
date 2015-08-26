@@ -20,7 +20,6 @@ build_lists: true
 ---
 
 title: Multiple Colors of Migration
-build_lists: true
 
 - There are still many (too much) eZ Publish legacy sites 
 - eZ Publish 5.4 / 2014.11 is supported until May 2019
@@ -43,7 +42,6 @@ subtitle: Let us know you better ...
 ---
 
 title: DOING Agenda
-build_lists: true
 
 Things we would like to discuss:
 
@@ -63,7 +61,6 @@ class: segue dark nobackground
 
 title: What are the problems?
 subtitle: Still hard to start but we prepared a lot
-build_lists: true
 
 - no starting point: a good eZ Publish version like 4.7 is missing -> cjwpublish1411
 - <https://github.com/cjw-network/cjwpublish1411>
@@ -75,7 +72,6 @@ build_lists: true
 
 title: Why waiting?
 subtitle: Financial reasons - How to sell it to your customer?
-build_lists: true
 
 
 - update / upgrade - but still no new feature for editors
@@ -90,7 +86,6 @@ build_lists: true
 
 title: Why waiting?
 subtitle: Technical reasons for starting now
-build_lists: true
 
 
 - it is on the upgrade path to eZ Platform 6
@@ -103,7 +98,6 @@ build_lists: true
 
 title: Which version to use?
 subtitle: We need a version as a stable base for the next 4 years
-build_lists: true
 
 - eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019
 - but many fixes are in the legacy bridge (-)
@@ -121,7 +115,6 @@ class: segue dark nobackground
 
 title: Run legacy only 
 subtitle: Short introduction
-build_lists: true
 
 - if you only need the bug fixes and security patches in legacy
 - our arguments won't convince you or your customer
@@ -140,7 +133,6 @@ class: segue dark nobackground
 ---
 
 title: Team up with a Symfony crack
-build_lists: true
 
 - To be honest: as eZ 4 developers, we are complete novices in eZ 5
 - It's easier for a Symfony crack to learn eZ than other way round
@@ -159,7 +151,6 @@ class: segue dark nobackground
 
 title: CjwPublishToolsBundle
 subtitle:  for integrators of small to medium sites
-build_lists: true
 
 - He comes from front end design and speaks fluent HTML and CSS
 - He has no problems with digging into template languages
@@ -170,8 +161,6 @@ build_lists: true
 ---
 
 title: Treemenu
-subtitle: cjw_treemenu
-build_lists: true
 
 <img src="images/treemenu.png" alt="" width="613" style="margin-top:-30px">
 
@@ -197,7 +186,6 @@ build_lists: true
 
 title: Breadcrumb
 subtitle: cjw_breadcrumb
-build_lists: true
 
 <img src="images/breadcrumb.png" alt="" width="421" style="margin-top:-30px">
 
@@ -223,7 +211,6 @@ title: Folder with line view screenshot
 
 title: Folder with line view source code
 subtitle: cjw_fetch_content
-build_lists: true
 
 <li>
 <pre class="prettyprint" data-lang="Twig">
@@ -250,8 +237,7 @@ build_lists: true
 
 ---
 
-title: Pagination (was Google navigator)
-subtitle: 
+title: Pagination (was called Google navigator)
 
 
 <img src="images/pagination.png" alt="" width="529" style="margin-top:-50px">
@@ -304,9 +290,64 @@ build_lists: true
 
 ---
 
-title: TODO Contact Form
-subtitle: 
-build_lists: true
+title: Feedback Form (infocollector) I
+subtitle: what is it doing
+
+- cjw_feedback_form => with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling
+
+    - Symfony form validation and form rendering is used
+    => ez contenttype cjw_feedback_form  
+    => with infocollector attributes 
+    => will be render a symfony form which will
+    => store content into infocollector table and will send an email
+
+
+---
+
+title: Feedback Form (infocollector) I
+
+    Define custom formbuilder.yml which will be load for this project
+    
+    src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml
+  <li>
+   <pre class="prettyprint" data-lang="yaml">   
+        parameters:
+            # Filepath + -name for formbuilder Config, from EZROOT directory => sitaccessaware config
+            # set default config for all siteaccesses can be overitten by siteaccess or siteaccessgroup if you 
+            # need a separate formbuilderconfig
+            cjw_publishtools.default.formbuilder.config_file: src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+    </pre>
+    </li>
+
+---
+
+title: Feedback Form (infocollector) I
+
+
+    example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+    
+ <li>
+ <pre class="prettyprint" data-lang="yaml">       
+        ...
+        formcollector_config:
+            parameters:
+                button_config:
+                    save_button:
+                        label:  cjw_publishtools.formbuilder.default.button.send
+                    cancel_button: false
+            types:
+                cjw_feedback_form:
+                    handler:
+                        infocollector:
+        #                sendmail:
+        #                    email_sender: @email
+        #                    email_subject: @subject
+                        success:
+                            template: :form:success.html.twig
+    
+</pre>
+</li>
 
 
 

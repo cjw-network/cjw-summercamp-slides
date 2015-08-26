@@ -56,14 +56,13 @@ URL: https://code.google.com/p/io-2012-slides
 
   Multiple Colors of Migration
 
-  (c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe
+  (c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe, Gabriel Werzner Regalado
 
 
 -->
 
 <ul class="build">
 <li><strong>Ekke</strong> is a consultant with deep knowledge in eZ Publish 4 and 5, eZ Find / Apache Solr and with a faible for coming cutting edge web technologies. He is one of the organizers of the PHP Unconference since eight years.</li>
-<li><strong>Martin</strong> is TODO</li>
 <li>
 <p><strong>Donat</strong> is owner of Webmanufaktur, a full service web agency in Switzerland. He works as projects manager, software architect and developer and likes thinking outside of the box. In the last year he has been involved in major pure eZ 5 projects.</p>
 </li>
@@ -80,7 +79,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Multiple Colors of Migration</h2>
       <h3></h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>There are still many (too much) eZ Publish legacy sites </li>
 <li>eZ Publish 5.4 / 2014.11 is supported until May 2019</li>
 <li>So there is a stable business base for the next 4 years</li>
@@ -101,9 +100,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Who is in the audience?</h2>
       <h3>Let us know you better ...</h3>
     </hgroup>
-    <article ><ul class="build">
-<li>Who is coming from the eZ World?</li>
-<li>Who is coming from the Symfony World?</li>
+    <article ><ul>
 <li>Who has realized eZ Publish 5 sites (productive)?</li>
 <li>Who has realized pure eZ Publish 5 sites (no legacy)?</li>
 </ul></article>
@@ -117,12 +114,11 @@ URL: https://code.google.com/p/io-2012-slides
       <h3></h3>
     </hgroup>
     <article ><p>Things we would like to discuss:</p>
-<ul class="build">
+<ul>
 <li>Reasons for not waiting any more</li>
 <li>Run legacy only</li>
-<li>Run Symfony only</li>
-<li>Your fast (easy) way to pure Symfony</li>
-<li></li>
+<li>Run eZ Publih 5 Symfony stack only</li>
+<li>Your fast (easy) way to pure TWIG Templates</li>
 </ul></article>
  
 </slide>
@@ -141,10 +137,11 @@ URL: https://code.google.com/p/io-2012-slides
   
     <hgroup>
       <h2>What are the problems?</h2>
-      <h3>Still hard to start, we prepared something</h3>
+      <h3>Still hard to start but we prepared a lot</h3>
     </hgroup>
-    <article ><ul class="build">
-<li>no starting point: a good eZ Publish version like 4.7 is missing</li>
+    <article ><ul>
+<li>no starting point: a good eZ Publish version like 4.7 is missing -&gt; cjwpublish1411</li>
+<li><a href="https://github.com/cjw-network/cjwpublish1411">https://github.com/cjw-network/cjwpublish1411</a></li>
 <li>many logic is in templates, everything new, everything different?</li>
 <li>no multi site / multi repository setup</li>
 <li>performance, performance, performance,</li>
@@ -158,7 +155,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Why waiting?</h2>
       <h3>Financial reasons - How to sell it to your customer?</h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>update / upgrade - but still no new feature for editors</li>
 <li>
 <p>many security fixes - but often part of maintenance support</p>
@@ -179,8 +176,8 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Why waiting?</h2>
       <h3>Technical reasons for starting now</h3>
     </hgroup>
-    <article ><ul class="build">
-<li>it is on the upgrade path to eZ Plattform 6</li>
+    <article ><ul>
+<li>it is on the upgrade path to eZ Platform 6</li>
 <li>many security and bug fixes</li>
 <li>TWIG for new templates and fallback to old templates when needed</li>
 <li>easy to extend with Symfony bundles, there are more than 2500 on e.g. <a href="http://knpbundles.com/">http://knpbundles.com/</a></li>
@@ -195,12 +192,12 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Which version to use?</h2>
       <h3>We need a version as a stable base for the next 4 years</h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>eZ Publish 5.3 / 5.4 aka 2014.11 is supported until May 2019</li>
 <li>but many fixes are in the legacy bridge (-)</li>
 <li>but newer versions are pre alpha (+)</li>
 <li>but there is no real save version to switch (-)</li>
-<li>solution take our cjwpublish and help to keep it fresh (+)</li>
+<li>solution take our cjwpublish1411 and help to keep it fresh (+)</li>
 </ul></article>
  
 </slide>
@@ -221,7 +218,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Run legacy only</h2>
       <h3>Short introduction</h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>if you only need the bug fixes and security patches in legacy</li>
 <li>our arguments won't convince you or your customer</li>
 <li>the installation has more than 150 extensions</li>
@@ -246,12 +243,12 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Team up with a Symfony Crack</h2>
+      <h2>Team up with a Symfony crack</h2>
       <h3></h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>To be honest: as eZ 4 developers, we are complete novices in eZ 5</li>
-<li>It's easier for a Smyfony Crack to learn eZ than other way round</li>
+<li>It's easier for a Symfony crack to learn eZ than other way round</li>
 <li>Symfony community is hungry for a CMS, so watch out for new competition</li>
 <li>But @Symfony cracks: It's not easy: an eZ Publish and CMS expert will reduce your risk</li>
 <li>And will make your content architecture better and more maintainable</li>
@@ -276,7 +273,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>CjwPublishToolsBundle</h2>
       <h3>for integrators of small to medium sites</h3>
     </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>He comes from front end design and speaks fluent HTML and CSS</li>
 <li>He has no problems with digging into template languages</li>
 <li>He prefers solutions with all needed functionality</li>
@@ -290,7 +287,7 @@ URL: https://code.google.com/p/io-2012-slides
   
     <hgroup>
       <h2>Treemenu</h2>
-      <h3>cjw_treemenu</h3>
+      <h3></h3>
     </hgroup>
     <article ><p><img src="images/treemenu.png" alt="" width="613" style="margin-top:-30px"></p>
 <li>
@@ -378,7 +375,7 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Pagination (was Google navigator)</h2>
+      <h2>Pagination (was called Google navigator)</h2>
       <h3></h3>
     </hgroup>
     <article ><p><img src="images/pagination.png" alt="" width="529" style="margin-top:-50px"></p>
@@ -442,10 +439,75 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>TODO Contact Form</h2>
+      <h2>Feedback Form (infocollector) I</h2>
+      <h3>what is it doing</h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>cjw_feedback_form =&gt; with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling</p>
+<ul>
+<li>Symfony form validation and form rendering is used
+=&gt; ez contenttype cjw_feedback_form<br />
+=&gt; with infocollector attributes 
+=&gt; will be render a symfony form which will
+=&gt; store content into infocollector table and will send an email</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Feedback Form (infocollector) I</h2>
       <h3></h3>
     </hgroup>
-    <article ></article>
+    <article ><pre><code>Define custom formbuilder.yml which will be load for this project
+
+src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml
+</code></pre>
+<p><li>
+   <pre class="prettyprint" data-lang="yaml"> <br />
+        parameters:
+            # Filepath + -name for formbuilder Config, from EZROOT directory =&gt; sitaccessaware config
+            # set default config for all siteaccesses can be overitten by siteaccess or siteaccessgroup if you 
+            # need a separate formbuilderconfig
+            cjw_publishtools.default.formbuilder.config_file: src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+    </pre>
+    </li></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Feedback Form (infocollector) I</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre><code>example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
+src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+</code></pre>
+<p><li>
+ <pre class="prettyprint" data-lang="yaml">     <br />
+        ...
+        formcollector_config:
+            parameters:
+                button_config:
+                    save_button:
+                        label:  cjw_publishtools.formbuilder.default.button.send
+                    cancel_button: false
+            types:
+                cjw_feedback_form:
+                    handler:
+                        infocollector:
+        #                sendmail:
+        #                    email_sender: @email
+        #                    email_subject: @subject
+                        success:
+                            template: :form:success.html.twig</p>
+<p></pre>
+</li></p></article>
  
 </slide>
 
@@ -656,8 +718,10 @@ parameters:
 <p>CJW MultiSiteBundle TODO link to cjwpublish</p>
 <ul>
 <li><a href="https://github.com/cjw-network/MultiSiteBundle">https://github.com/cjw-network/MultiSiteBundle</a></li>
-<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;">&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;</a></li>
-</ul></article>
+</ul>
+<p>CJW Publish for quick start
+<em> <a href="https://github.com/cjw-network/cjwpublish1411">https://github.com/cjw-network/cjwpublish1411</a>
+</em> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;">&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;</a></p></article>
  
 </slide>
 
