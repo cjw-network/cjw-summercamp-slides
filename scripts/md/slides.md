@@ -8,12 +8,11 @@ build_lists: true
 
   Multiple Colors of Migration
 
-  (c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe
+  (c) 2015 Ekkehard Doerre, Donat Fritschy, Jan Meier, Martin Wilde, Felix Woldt, Dirk Lampe, Gabriel Werzner Regalado
 
 
 -->
 * <strong>Ekke</strong> is a consultant with deep knowledge in eZ Publish 4 and 5, eZ Find / Apache Solr and with a faible for coming cutting edge web technologies. He is one of the organizers of the PHP Unconference since eight years.
-* <strong>Martin</strong> is TODO
 * <strong>Donat</strong> is owner of Webmanufaktur, a full service web agency in Switzerland. He works as projects manager, software architect and developer and likes thinking outside of the box. In the last year he has been involved in major pure eZ 5 projects.
 
 * Members of CJW Network
@@ -36,7 +35,7 @@ build_lists: true
 
 title: Who is in the audience?
 subtitle: Let us know you better ...
-build_lists: true
+
 
 - Who has realized eZ Publish 5 sites (productive)?
 - Who has realized pure eZ Publish 5 sites (no legacy)?
@@ -50,9 +49,9 @@ Things we would like to discuss:
 
 - Reasons for not waiting any more
 - Run legacy only
-- Run Symfony only
-- Your fast (easy) way to pure Symfony
-- 
+- Run eZ Publih 5 Symfony stack only
+- Your fast (easy) way to pure TWIG Templates
+ 
 
 ---
 
@@ -66,7 +65,8 @@ title: What are the problems?
 subtitle: Still hard to start but we prepared a lot
 build_lists: true
 
-- no starting point: a good eZ Publish version like 4.7 is missing
+- no starting point: a good eZ Publish version like 4.7 is missing -> cjwpublish1411
+- <https://github.com/cjw-network/cjwpublish1411>
 - many logic is in templates, everything new, everything different?
 - no multi site / multi repository setup
 - performance, performance, performance,
@@ -93,7 +93,7 @@ subtitle: Technical reasons for starting now
 build_lists: true
 
 
-- it is on the upgrade path to eZ Plattform 6
+- it is on the upgrade path to eZ Platform 6
 - many security and bug fixes
 - TWIG for new templates and fallback to old templates when needed
 - easy to extend with Symfony bundles, there are more than 2500 on e.g. <http://knpbundles.com/>
@@ -109,7 +109,7 @@ build_lists: true
 - but many fixes are in the legacy bridge (-)
 - but newer versions are pre alpha (+)
 - but there is no real save version to switch (-)
-- solution take our cjwpublish and help to keep it fresh (+)
+- solution take our cjwpublish1411 and help to keep it fresh (+)
 
 ---
 
@@ -139,11 +139,11 @@ class: segue dark nobackground
 
 ---
 
-title: Team up with a Symfony Crack
+title: Team up with a Symfony crack
 build_lists: true
 
 - To be honest: as eZ 4 developers, we are complete novices in eZ 5
-- It's easier for a Smyfony Crack to learn eZ than other way round
+- It's easier for a Symfony crack to learn eZ than other way round
 - Symfony community is hungry for a CMS, so watch out for new competition
 - But @Symfony cracks: It's not easy: an eZ Publish and CMS expert will reduce your risk
 - And will make your content architecture better and more maintainable
@@ -474,6 +474,9 @@ Slides (Source)
 CJW MultiSiteBundle TODO link to cjwpublish
 
 * <https://github.com/cjw-network/MultiSiteBundle>
+
+CJW Publish for quick start
+* <https://github.com/cjw-network/cjwpublish1411>
 * <mailto:info@cjw-network.com>
 
 ---
