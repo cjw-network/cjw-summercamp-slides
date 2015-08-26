@@ -237,6 +237,71 @@ subtitle: cjw_fetch_content
 
 ---
 
+title: content fetch ezp 4.x smarty
+class: smaller
+
+<li>
+<pre class="prettyprint" data-lang="tpl">
+{def $node_id = 2
+     $limit = 10
+     $offset = 10
+     $depth = 5
+     $include = array( 'article' )
+     $list_items = fetch( 'content', 'list', hash( 'parent_node_id', $node_id,
+                                                   'depth', $depth,
+                                                   'limit', $limit,
+                                                   'offset', $offset,
+                                                   'class_filter_type', 'include',
+                                                   'class_filter_array', $include,
+                                                   'sort_by', array( 'published', true() ) ) )
+     $list_count = fetch( 'content', 'list_count', hash( 'parent_node_id', $node_id,
+                                                         'depth': $depth,
+                                                         'class_filter_type', 'include',
+                                                         'class_filter_array', $include ) )
+     $parent_node = fetch( 'content', 'node', hash( 'node_id', $node_id ) ) }
+
+{foreach $list_items as $item}
+    {$item|attribute( show, 5 )}
+{/foreach}
+</pre>
+	</li>
+	
+---
+
+title: cjw_content_fetch ezp 5.x twig
+class: smaller
+
+<li>
+<pre class="prettyprint" data-lang="twig">
+{% set location_id = 2 %}
+{% set limit = 10 %}
+{% set offset = 10 %}
+{% set include = [ 'article' ] %}
+{% set depth = 5 %}
+{% set content_object = false %}
+{% set list_items = cjw_fetch_content( [ location_id ], { 'depth': depth,
+                                                          'limit': limit,
+                                                          'offset': offset,
+                                                          'include': include,
+                                                          'sortby': [ [ 'DatePublished', 'DESC' ] ],
+                                                          'parent': true,
+                                                          'count': true } ) %}
+{% set list_count = list_items[ location_id ][ 'count' ] %}
+{% set parent_location = list_items[ location_id ][ 'parent' ] %}
+{% for item in list_items[ location_id ][ 'children' ] %}
+    {# show the location object, if you use the "'datamap': true" parameter, this will show the content object #}
+    {{ dump( item ) }}
+    {# example for getting the content object for this location, if needed #}
+    {#
+        {% set content_object = cjw_load_content_by_id( item.contentInfo.id ) %}
+        {{ dump( content_object ) }}
+    #}
+{% endfor %}
+</pre>
+</li>
+
+---
+
 title: Pagination (was called Google navigator)
 
 
@@ -281,21 +346,16 @@ class: smaller
  
 
 ---
-title: A short walkthrough to Multi language
-subtitle: An example of the language logic
-build_lists: true
 
-Production:
+title: A short walk through to Multi language
 
-http://www.cjwpublish.com/    => en
-http://www.cjwpublish.com/en  
-http://www.cjwpublish.com/de
+<img src="images/en-de-01.png" alt="" width="400px" style="margin-top:-30px">
 
-http://www.cjwpublish.com/admin_en
-http://www.cjwpublish.com/admin_de
+- <http://www.cjwpublish.com/>    => en
+- <http://www.cjwpublish.com/en>  
+- <http://www.cjwpublish.com/de>
 
-
-<img src="images/ed-de-01.png.png" alt="" width="612" style="margin-top:-30px">
+- <http://www.cjwpublish.com/admin_en> or <http://www.cjwpublish.com/admin_de>
  
 ---
 
@@ -338,57 +398,55 @@ subtitle: How to translate strings using the messages file.
 title: Feedback Form (infocollector) I
 subtitle: what is it doing
 
-cjw_feedback_form => with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling
-
+- *cjw_feedback_form* with infocollector using CjwPublishToolsBundle eZP content type mapping to symfony form handling
 - Symfony form validation and form rendering is used
-- ez contenttype cjw_feedback_form  
-- with infocollector attributes 
-- will be render a symfony form which will
-- store content into infocollector table and will send an email
+
+- ez contenttype *cjw_feedback_form* with infocollector attributes will be render a symfony form which will store content into infocollector table and will send an email
 
 
 ---
 
-title: Feedback Form (infocollector) I
+title: Feedback Form (infocollector) II
 
-    Define custom formbuilder.yml which will be load for this project
-    
+Define custom formbuilder.yml which will be load for this project
     src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml
+
   <li>
    <pre class="prettyprint" data-lang="yaml">   
-        parameters:
-            # Filepath + -name for formbuilder Config, from EZROOT directory => sitaccessaware config
-            # set default config for all siteaccesses can be overitten by siteaccess or siteaccessgroup if you 
-            # need a separate formbuilderconfig
-            cjw_publishtools.default.formbuilder.config_file: src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+parameters:
+    # Filepath + -name for formbuilder Config, from EZROOT directory 
+    # => sitaccessaware config
+    # set default config for all siteaccesses can be overitten by siteaccess 
+    # or siteaccessgroup if you need a separate formbuilderconfig
+    cjw_publishtools.default.formbuilder.config_file: 
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
     </pre>
     </li>
 
 ---
 
-title: Feedback Form (infocollector) I
+title: Feedback Form (infocollector) III
 
-
-    example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
+example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
     src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
     
  <li>
- <pre class="prettyprint" data-lang="yaml">       
+ <pre class="prettyprint" data-lang="yaml">
 formcollector_config:
-    parameters:
-        button_config:
-            save_button:
-                label:  cjw_publishtools.formbuilder.default.button.send
-            cancel_button: false
-    types:
-        cjw_feedback_form:
-            handler:
-                infocollector:
-#                sendmail:
-#                    email_sender: @email
-#                    email_subject: @subject
-                success:
-                    template: :form:success.html.twig
+parameters:
+    button_config:
+        save_button:
+            label:  cjw_publishtools.formbuilder.default.button.send
+        cancel_button: false
+types:
+    cjw_feedback_form:
+        handler:
+            infocollector:
+            success:
+                template: :form:success.html.twig
+            sendmail:
+                email_sender: @email
+                email_subject: @subject
     
 </pre>
 </li>
@@ -398,7 +456,7 @@ formcollector_config:
 
 ---
 
-title: Frontend editing Edit User - configuration YAML file 
+title: Frontend editing Edit User - configuration
 
 - src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
 <li>
@@ -424,7 +482,7 @@ frontendediting_config:
 
 ---
 
-title: Frontend editing Edit User - TWIG template 
+title: Frontend editing Edit User - template 
 
 - take the standard Symfony form(form) in TWIG template
 
@@ -442,7 +500,7 @@ title: Frontend editing Edit User - TWIG template
 
 ---
 
-title: A short walkthrough to Multi language
+title: TODO multi site
 subtitle: How to access the multisite ezpublish console
 
 <li>

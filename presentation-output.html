@@ -372,6 +372,77 @@ URL: https://code.google.com/p/io-2012-slides
  
 </slide>
 
+<slide class="smaller" >
+  
+    <hgroup>
+      <h2>content fetch ezp 4.x smarty</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><li>
+<pre class="prettyprint" data-lang="tpl">
+{def $node_id = 2
+     $limit = 10
+     $offset = 10
+     $depth = 5
+     $include = array( 'article' )
+     $list_items = fetch( 'content', 'list', hash( 'parent_node_id', $node_id,
+                                                   'depth', $depth,
+                                                   'limit', $limit,
+                                                   'offset', $offset,
+                                                   'class_filter_type', 'include',
+                                                   'class_filter_array', $include,
+                                                   'sort_by', array( 'published', true() ) ) )
+     $list_count = fetch( 'content', 'list_count', hash( 'parent_node_id', $node_id,
+                                                         'depth': $depth,
+                                                         'class_filter_type', 'include',
+                                                         'class_filter_array', $include ) )
+     $parent_node = fetch( 'content', 'node', hash( 'node_id', $node_id ) ) }
+
+{foreach $list_items as $item}
+    {$item|attribute( show, 5 )}
+{/foreach}
+</pre>
+    </li></article>
+ 
+</slide>
+
+<slide class="smaller" >
+  
+    <hgroup>
+      <h2>cjw_content_fetch ezp 5.x twig</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><li>
+<pre class="prettyprint" data-lang="twig">
+{% set location_id = 2 %}
+{% set limit = 10 %}
+{% set offset = 10 %}
+{% set include = [ 'article' ] %}
+{% set depth = 5 %}
+{% set content_object = false %}
+{% set list_items = cjw_fetch_content( [ location_id ], { 'depth': depth,
+                                                          'limit': limit,
+                                                          'offset': offset,
+                                                          'include': include,
+                                                          'sortby': [ [ 'DatePublished', 'DESC' ] ],
+                                                          'parent': true,
+                                                          'count': true } ) %}
+{% set list_count = list_items[ location_id ][ 'count' ] %}
+{% set parent_location = list_items[ location_id ][ 'parent' ] %}
+{% for item in list_items[ location_id ][ 'children' ] %}
+    {# show the location object, if you use the "'datamap': true" parameter, this will show the content object #}
+    {{ dump( item ) }}
+    {# example for getting the content object for this location, if needed #}
+    {#
+        {% set content_object = cjw_load_content_by_id( item.contentInfo.id ) %}
+        {{ dump( content_object ) }}
+    #}
+{% endfor %}
+</pre>
+</li></article>
+ 
+</slide>
+
 <slide  >
   
     <hgroup>
@@ -429,10 +500,67 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>TODO Multi language</h2>
+      <h2>A short walk through to Multi language</h2>
       <h3></h3>
     </hgroup>
-    <article ><p><img src="images/ed-de-01.png.png" alt="" width="612" style="margin-top:-30px"></p></article>
+    <article ><p><img src="images/en-de-01.png" alt="" width="400px" style="margin-top:-30px"></p>
+<ul>
+<li><a href="http://www.cjwpublish.com/">http://www.cjwpublish.com/</a>    =&gt; en</li>
+<li><a href="http://www.cjwpublish.com/en">http://www.cjwpublish.com/en</a>  </li>
+<li>
+<p><a href="http://www.cjwpublish.com/de">http://www.cjwpublish.com/de</a></p>
+</li>
+<li>
+<p><a href="http://www.cjwpublish.com/admin_en">http://www.cjwpublish.com/admin_en</a> or <a href="http://www.cjwpublish.com/admin_de">http://www.cjwpublish.com/admin_de</a></p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>A short walk through to multi language</h2>
+      <h3>Using the translation system.</h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>translations for static strings =&gt; formbuilder uses the trans system from symfony</p>
+</li>
+<li>
+<p>src/Cjw/PublishToolsBundle/Resources/translations/messages.de.yml  <em>Deutsch</em> </p>
+</li>
+<li>src/Cjw/PublishToolsBundle/Resources/translations/messages.en.yml  <em>English</em></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>A short walk through to multi language</h2>
+      <h3>How to translate strings using the messages file.</h3>
+    </hgroup>
+    <article ><ul>
+<li>../Resources/translations/messages.de.yml
+<li>
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'Die E-Mail-Adresse'
+</pre>
+</li></li>
+<li>../Resources/translations/messages.en.yml
+<li>
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'E-Mail-Address'
+</pre>
+</li></li>
+<li>TWIG template
+<li>
+   <pre class="prettyprint" data-lang="twig">
+   {{ 'cjw_publishtools.formbuilder.user.email'|trans }}
+</pre>
+</li></li>
+</ul></article>
  
 </slide>
 
@@ -443,15 +571,12 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>what is it doing</h3>
     </hgroup>
     <article ><ul>
+<li><em>cjw_feedback_form</em> with infocollector using CjwPublishToolsBundle eZP content type mapping to symfony form handling</li>
 <li>
-<p>cjw_feedback_form =&gt; with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling</p>
-<ul>
-<li>Symfony form validation and form rendering is used
-=&gt; ez contenttype cjw_feedback_form<br />
-=&gt; with infocollector attributes 
-=&gt; will be render a symfony form which will
-=&gt; store content into infocollector table and will send an email</li>
-</ul>
+<p>Symfony form validation and form rendering is used</p>
+</li>
+<li>
+<p>ez contenttype <em>cjw_feedback_form</em> with infocollector attributes will be render a symfony form which will store content into infocollector table and will send an email</p>
 </li>
 </ul></article>
  
@@ -460,20 +585,20 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Feedback Form (infocollector) I</h2>
+      <h2>Feedback Form (infocollector) II</h2>
       <h3></h3>
     </hgroup>
-    <article ><pre><code>Define custom formbuilder.yml which will be load for this project
-
-src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml
-</code></pre>
+    <article ><p>Define custom formbuilder.yml which will be load for this project
+    src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml</p>
 <p><li>
    <pre class="prettyprint" data-lang="yaml"> <br />
-        parameters:
-            # Filepath + -name for formbuilder Config, from EZROOT directory =&gt; sitaccessaware config
-            # set default config for all siteaccesses can be overitten by siteaccess or siteaccessgroup if you 
-            # need a separate formbuilderconfig
-            cjw_publishtools.default.formbuilder.config_file: src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+parameters:
+    # Filepath + -name for formbuilder Config, from EZROOT directory 
+    # =&gt; sitaccessaware config
+    # set default config for all siteaccesses can be overitten by siteaccess 
+    # or siteaccessgroup if you need a separate formbuilderconfig
+    cjw_publishtools.default.formbuilder.config_file: 
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
     </pre>
     </li></p></article>
  
@@ -482,30 +607,28 @@ src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml
 <slide  >
   
     <hgroup>
-      <h2>Feedback Form (infocollector) I</h2>
+      <h2>Feedback Form (infocollector) III</h2>
       <h3></h3>
     </hgroup>
-    <article ><pre><code>example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
-src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
-</code></pre>
+    <article ><p>example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml</p>
 <p><li>
- <pre class="prettyprint" data-lang="yaml">     <br />
-        ...
-        formcollector_config:
-            parameters:
-                button_config:
-                    save_button:
-                        label:  cjw_publishtools.formbuilder.default.button.send
-                    cancel_button: false
-            types:
-                cjw_feedback_form:
-                    handler:
-                        infocollector:
-        #                sendmail:
-        #                    email_sender: @email
-        #                    email_subject: @subject
-                        success:
-                            template: :form:success.html.twig</p>
+ <pre class="prettyprint" data-lang="yaml">
+formcollector_config:
+parameters:
+    button_config:
+        save_button:
+            label:  cjw_publishtools.formbuilder.default.button.send
+        cancel_button: false
+types:
+    cjw_feedback_form:
+        handler:
+            infocollector:
+            success:
+                template: :form:success.html.twig
+            sendmail:
+                email_sender: @email
+                email_subject: @subject</p>
 <p></pre>
 </li></p></article>
  
@@ -514,10 +637,73 @@ src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
 <slide  >
   
     <hgroup>
-      <h2>TODO Frontend editing</h2>
+      <h2>Frontend editing Edit User - configuration</h2>
       <h3></h3>
     </hgroup>
-    <article ></article>
+    <article ><ul>
+<li>src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+<li>
+    <pre class="prettyprint" data-lang="YAML">
+frontendediting_config:
+    parameters:
+        template: :edit.html.twig
+    handler:
+        success:
+            handler_class: successHandler
+            template: ':email:user_register.html.twig'
+    types:
+        cjw_user:
+            parameters:
+                template: :user:edit.html.twig
+            handler:
+            fields:
+                - first_name
+                - last_name
+                - user_account
+    </pre>
+</li></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frontend editing Edit User - template</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>take the standard Symfony form(form) in TWIG template</li>
+</ul>
+<li>
+    <pre class="prettyprint" data-lang="twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+
+    {{ form(form) }}
+
+{% endblock %}
+    </pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>TODO multi site</h2>
+      <h3>How to access the multisite ezpublish console</h3>
+    </hgroup>
+    <article ><li>
+   <pre class="prettyprint" data-lang="bash">
+php cjwpublish/console-cjwpublish
+
+php cjwpublish/console-$ProjectName
+</pre
+</li>
+
+<p>=&gt; is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle</p></article>
  
 </slide>
 
