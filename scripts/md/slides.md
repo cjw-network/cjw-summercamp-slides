@@ -329,22 +329,21 @@ title: Feedback Form (infocollector) I
     
  <li>
  <pre class="prettyprint" data-lang="yaml">       
-        ...
-        formcollector_config:
-            parameters:
-                button_config:
-                    save_button:
-                        label:  cjw_publishtools.formbuilder.default.button.send
-                    cancel_button: false
-            types:
-                cjw_feedback_form:
-                    handler:
-                        infocollector:
-        #                sendmail:
-        #                    email_sender: @email
-        #                    email_subject: @subject
-                        success:
-                            template: :form:success.html.twig
+formcollector_config:
+    parameters:
+        button_config:
+            save_button:
+                label:  cjw_publishtools.formbuilder.default.button.send
+            cancel_button: false
+    types:
+        cjw_feedback_form:
+            handler:
+                infocollector:
+#                sendmail:
+#                    email_sender: @email
+#                    email_subject: @subject
+                success:
+                    template: :form:success.html.twig
     
 </pre>
 </li>
@@ -354,31 +353,20 @@ title: Feedback Form (infocollector) I
 
 ---
 
-title: Frontend editing
-subtitle: Example configuration YAML file
-build_lists: true
+title: Frontend editing Edit User - configuration YAML file 
 
+- src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
 <li>
-    <pre>
-button_label_config:
-    cancel_button_label: cjw_publishtools.formbuilder.default.button.cancel
-    save_button_label: cjw_publishtools.formbuilder.default.button.save
+    <pre class="prettyprint" data-lang="YAML">
 frontendediting_config:
     parameters:
         template: :edit.html.twig
-
-        button_config:
-            save_button:
-                label: cjw_publishtools.formbuilder.default.button.save
-            cancel_button:
-                label: cjw_publishtools.formbuilder.default.button.cancel
-
     handler:
         success:
             handler_class: successHandler
             template: ':email:user_register.html.twig'
     types:
-        user:
+        cjw_user:
             parameters:
                 template: :user:edit.html.twig
             handler:
@@ -391,30 +379,18 @@ frontendediting_config:
 
 ---
 
-title: Frontend editing
-subtitle: Example TWIG template
-build_lists: true
+title: Frontend editing Edit User - TWIG template 
+
+- take the standard Symfony form(form) in TWIG template
 
 <li>
-    <pre>
+    <pre class="prettyprint" data-lang="twig">
 {% extends site_bundle_name ~ '::pagelayout.html.twig' %}
 
 {% block content %}
-    <div class="class-form content-view-edit">
-        {#{{ include( site_bundle_name ~ ':parts:breadcrumb.html.twig' ) }}#}
 
-        {#<div id="content-right">#}
-            {#{{ include( site_bundle_name ~ ':parts:menu_user.html.twig' ) }}#}
-        {#</div>#}
-
-        <div id="content-main">
-            <h1 class="content-header">Edit</h1>
-
-            {{ form(form) }}
-
-        </div>
-    </div>
-
+    {{ form(form) }}
+    
 {% endblock %}
     </pre>
 </li>
