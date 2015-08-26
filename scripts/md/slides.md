@@ -296,51 +296,55 @@ http://www.cjwpublish.com/admin_de
 
 
 <img src="images/ed-de-01.png.png" alt="" width="612" style="margin-top:-30px">
----
-
-title: A short walkthrough to Multi language
-subtitle: How to access the multisite ezpublish console
-build_lists: true
-
-php cjwpublish/console-cjwpublish   (php cjwpublish/console-$ProjectName)
-=> is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle
-
  
 ---
-title: A short walkthrough to Multi language
+
+title: A short walk through to multi language
 subtitle: Using the translation system.
-build_lists: true
 
-translations for static strings => formbuilder use the trans system from symfony
 
-src/Cjw/PublishToolsBundle/Resources/translations/messages.de.yml  <- German  
-src/Cjw/PublishToolsBundle/Resources/translations/messages.en.yml  <- English
+- translations for static strings => formbuilder uses the trans system from symfony
+
+- src/Cjw/PublishToolsBundle/Resources/translations/messages.de.yml  *Deutsch* 
+- src/Cjw/PublishToolsBundle/Resources/translations/messages.en.yml  *English*
+
 ---
-title: A short walkthrough to Multi language
+
+title: A short walk through to multi language
 subtitle: How to translate strings using the messages file.
-build_lists: true
 
-//../Resources/translations/messages.de.yml
-=> cjw_publishtools.formbuilder.user.email: E-Mail-Adresse
+- ../Resources/translations/messages.de.yml
+<li>
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'Die E-Mail-Adresse'
+</pre>
+</li>
+- ../Resources/translations/messages.en.yml
+<li>
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'E-Mail-Address'
+</pre>
+</li>
+- TWIG template
+<li>
+   <pre class="prettyprint" data-lang="twig">
+   {{ 'cjw_publishtools.formbuilder.user.email'|trans }}
+</pre>
+</li>
 
-//../Resources/translations/messages.en.yml
-=> cjw_publishtools.formbuilder.user.email: E-Mail-Address
 
-//twig template
-{{ cjw_publishtools.formbuilder.user.email|trans }}
-  
 ---
 
 title: Feedback Form (infocollector) I
 subtitle: what is it doing
 
-- cjw_feedback_form => with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling
+cjw_feedback_form => with infocollector using CjwPublishToolsBundle eZ Publish content type mapping to symfony form handling
 
-    - Symfony form validation and form rendering is used
-    => ez contenttype cjw_feedback_form  
-    => with infocollector attributes 
-    => will be render a symfony form which will
-    => store content into infocollector table and will send an email
+- Symfony form validation and form rendering is used
+- ez contenttype cjw_feedback_form  
+- with infocollector attributes 
+- will be render a symfony form which will
+- store content into infocollector table and will send an email
 
 
 ---
@@ -435,6 +439,22 @@ title: Frontend editing Edit User - TWIG template
 {% endblock %}
     </pre>
 </li>
+
+---
+
+title: A short walkthrough to Multi language
+subtitle: How to access the multisite ezpublish console
+
+<li>
+   <pre class="prettyprint" data-lang="bash">
+php cjwpublish/console-cjwpublish   
+
+php cjwpublish/console-$ProjectName
+</pre
+</li>
+
+=> is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle
+
 
 ---
 
