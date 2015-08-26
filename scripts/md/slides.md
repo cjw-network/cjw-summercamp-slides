@@ -354,12 +354,70 @@ title: Feedback Form (infocollector) I
 
 ---
 
-title: TODO Frontend editing
-subtitle: 
+title: Frontend editing
+subtitle: Example configuration YAML file
 build_lists: true
 
+<li>
+    <pre>
+button_label_config:
+    cancel_button_label: cjw_publishtools.formbuilder.default.button.cancel
+    save_button_label: cjw_publishtools.formbuilder.default.button.save
+frontendediting_config:
+    parameters:
+        template: :edit.html.twig
 
+        button_config:
+            save_button:
+                label: cjw_publishtools.formbuilder.default.button.save
+            cancel_button:
+                label: cjw_publishtools.formbuilder.default.button.cancel
 
+    handler:
+        success:
+            handler_class: successHandler
+            template: ':email:user_register.html.twig'
+    types:
+        user:
+            parameters:
+                template: :user:edit.html.twig
+            handler:
+            fields:
+                - first_name
+                - last_name
+                - user_account
+    </pre>
+</li>
+
+---
+
+title: Frontend editing
+subtitle: Example TWIG template
+build_lists: true
+
+<li>
+    <pre>
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+    <div class="class-form content-view-edit">
+        {#{{ include( site_bundle_name ~ ':parts:breadcrumb.html.twig' ) }}#}
+
+        {#<div id="content-right">#}
+            {#{{ include( site_bundle_name ~ ':parts:menu_user.html.twig' ) }}#}
+        {#</div>#}
+
+        <div id="content-main">
+            <h1 class="content-header">Edit</h1>
+
+            {{ form(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}
+    </pre>
+</li>
 
 ---
 
