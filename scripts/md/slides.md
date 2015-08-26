@@ -41,7 +41,7 @@ subtitle: Let us know you better ...
 
 ---
 
-title: DOING Agenda
+title: Agenda
 
 Things we would like to discuss:
 

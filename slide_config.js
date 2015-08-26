@@ -31,14 +31,6 @@ var SLIDE_CONFIG = {
             github: 'http://github.com/ekked'
         },
         {
-            name: 'Martin Wilde',
-            company: 'JAC Systeme',
-            // gplus: 'http://plus.google.com/1234567890',
-            //twitter: '@ekked',
-            www: 'http://www.jac-systeme.de',
-            github: 'http://github.com/m-wilde'
-        },
-        {
             name: 'Donat Fritschy',
             company: 'Webmanufaktur',
             // gplus: 'http://plus.google.com/1234567890',
