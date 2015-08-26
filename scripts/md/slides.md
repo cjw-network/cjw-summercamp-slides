@@ -157,6 +157,7 @@ subtitle:  for integrators of small to medium sites
 - He prefers solutions with all needed functionality
 - He wants to develop web sites fast and easy at low cost
 - <https://github.com/cjw-network/CjwPublishToolsBundle>
+- go with it: </Applications/MAMP/htdocs/cjw-summercamp-preparation/cjwpublish1411/src/Cjw/SiteCjwpublishBundle>
 
 ---
 
@@ -445,14 +446,29 @@ types:
             success:
                 template: :form:success.html.twig
             sendmail:
-                email_sender: @email
-                email_subject: @subject
+                email_sender: test@test.com
+                email_subject: 'Collected Information from cjwpublish.com'
     
 </pre>
 </li>
 
+---
 
+eedback form - template 
 
+- take the standard Symfony form(form) in TWIG template
+
+<li>
+    <pre class="prettyprint" data-lang="twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+
+    {{ form(form) }}
+    
+{% endblock %}
+    </pre>
+</li>
 
 ---
 

@@ -110,7 +110,7 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>DOING Agenda</h2>
+      <h2>Agenda</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Things we would like to discuss:</p>
@@ -279,6 +279,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>He prefers solutions with all needed functionality</li>
 <li>He wants to develop web sites fast and easy at low cost</li>
 <li><a href="https://github.com/cjw-network/CjwPublishToolsBundle">https://github.com/cjw-network/CjwPublishToolsBundle</a></li>
+<li>go with it: </Applications/MAMP/htdocs/cjw-summercamp-preparation/cjwpublish1411/src/Cjw/SiteCjwpublishBundle></li>
 </ul></article>
  
 </slide>
@@ -627,10 +628,34 @@ types:
             success:
                 template: :form:success.html.twig
             sendmail:
-                email_sender: @email
-                email_subject: @subject</p>
+                email_sender: test@test.com
+                email_subject: 'Collected Information from cjwpublish.com'</p>
 <p></pre>
 </li></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>eedback form - template </p>
+<ul>
+<li>take the standard Symfony form(form) in TWIG template</li>
+</ul>
+<li>
+    <pre class="prettyprint" data-lang="twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+
+    {{ form(form) }}
+
+{% endblock %}
+    </pre>
+</li></article>
  
 </slide>
 
