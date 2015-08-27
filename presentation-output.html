@@ -119,6 +119,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>Run legacy only</li>
 <li>Run eZ Publih 5 Symfony stack only</li>
 <li>Your fast (easy) way to pure TWIG Templates</li>
+<li>If there is time: Multi-Site/Multi-Repository Setup</li>
 </ul></article>
  
 </slide>
@@ -501,6 +502,173 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>title: Feedback Form (infocollector) I
+subtitle: what is it doing</p>
+<ul>
+<li><em>cjw_feedback_form</em> with infocollector using CjwPublishToolsBundle eZP content type mapping to symfony form handling</li>
+<li>
+<p>Symfony form validation and form rendering is used</p>
+</li>
+<li>
+<p>ez contenttype <em>cjw_feedback_form</em> with infocollector attributes will be render a symfony form which will store content into infocollector table and will send an email</p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Feedback Form (infocollector) II</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Define custom formbuilder.yml which will be load for this project
+    src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml</p>
+<p><li>
+   <pre class="prettyprint" data-lang="yaml"> <br />
+parameters:
+    # Filepath + -name for formbuilder Config, from EZROOT directory 
+    # =&gt; sitaccessaware config
+    # set default config for all siteaccesses can be overitten by siteaccess 
+    # or siteaccessgroup if you need a separate formbuilderconfig
+    cjw_publishtools.default.formbuilder.config_file: 
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+    </pre>
+    </li></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Feedback Form (infocollector) III</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
+    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml</p>
+<p><li>
+ <pre class="prettyprint" data-lang="yaml">
+formcollector_config:
+parameters:
+    button_config:
+        save_button:
+            label:  cjw_publishtools.formbuilder.default.button.send
+        cancel_button: false
+types:
+    cjw_feedback_form:
+        handler:
+            infocollector:
+            success:
+                template: :form:success.html.twig
+            sendmail:
+                email_sender: test@test.com
+                email_subject: 'Collected Information from cjwpublish.com'</p>
+<p></pre>
+</li></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Feedback form - template</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>take the standard Symfony form(form) in TWIG template</li>
+</ul>
+<li>
+    <pre class="prettyprint" data-lang="twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+
+    {{ form(form) }}
+
+{% endblock %}
+    </pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>formbuilder</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>forms can be defined in a yaml file or as a content class with infocollector fields</li>
+<li>stackable handler: send email, add to infocollector (needs orm), success</li>
+<li>forms defined via content classes can use the eZ Publish build in template override mechanism</li>
+<li>easy to use frontend editing (add and edit content)</li>
+<li>easy to use user register</li>
+<li><strong>hacking php classes is not needed</strong></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frontend editing Edit User - configuration</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
+<li>
+    <pre class="prettyprint" data-lang="YAML">
+frontendediting_config:
+    parameters:
+        template: :edit.html.twig
+    handler:
+        success:
+            handler_class: successHandler
+            template: ':email:user_register.html.twig'
+    types:
+        cjw_user:
+            parameters:
+                template: :user:edit.html.twig
+            handler:
+            fields:
+                - first_name
+                - last_name
+                - user_account
+    </pre>
+</li></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frontend editing Edit User - template</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>take the standard Symfony form(form) in TWIG template</li>
+</ul>
+<li>
+    <pre class="prettyprint" data-lang="twig">
+{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
+
+{% block content %}
+
+    {{ form(form) }}
+
+{% endblock %}
+    </pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>A short walk through to Multi language</h2>
       <h3></h3>
     </hgroup>
@@ -568,167 +736,19 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Feedback Form (infocollector) I</h2>
-      <h3>what is it doing</h3>
+      <h2>Performance</h2>
+      <h3>cjw_render_location vs. subcontroller calls</h3>
     </hgroup>
     <article ><ul>
-<li><em>cjw_feedback_form</em> with infocollector using CjwPublishToolsBundle eZP content type mapping to symfony form handling</li>
 <li>
-<p>Symfony form validation and form rendering is used</p>
+<p>e.g. <em>render( controller( ...</em>  calls in twig  =&gt; every subcontroller call costs a lot of time
+  between 30 - 100 ms so for a loop with 10 line view you can often save <strong>1 second</strong> ! if you use a normal template include or our</p>
 </li>
 <li>
-<p>ez contenttype <em>cjw_feedback_form</em> with infocollector attributes will be render a symfony form which will store content into infocollector table and will send an email</p>
+<p><em>cjw_render_location twig</em> function which uses the override system from ez like the  render( controller( "ez_content:viewLocation", {'location': child, 'viewType': 'line'} uses</p>
 </li>
+<li><em>avoid stash calls</em> if you can e.g. to give the location or content as an parameter in stead of the location id</li>
 </ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Feedback Form (infocollector) II</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Define custom formbuilder.yml which will be load for this project
-    src/Cjw/SiteCjwpublishBundle/app/config/parameters.yml</p>
-<p><li>
-   <pre class="prettyprint" data-lang="yaml"> <br />
-parameters:
-    # Filepath + -name for formbuilder Config, from EZROOT directory 
-    # =&gt; sitaccessaware config
-    # set default config for all siteaccesses can be overitten by siteaccess 
-    # or siteaccessgroup if you need a separate formbuilderconfig
-    cjw_publishtools.default.formbuilder.config_file: 
-    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
-    </pre>
-    </li></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Feedback Form (infocollector) III</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>example for defining an infocollector for of ezpublish content type / class  'cjw_feedback_form
-    src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml</p>
-<p><li>
- <pre class="prettyprint" data-lang="yaml">
-formcollector_config:
-parameters:
-    button_config:
-        save_button:
-            label:  cjw_publishtools.formbuilder.default.button.send
-        cancel_button: false
-types:
-    cjw_feedback_form:
-        handler:
-            infocollector:
-            success:
-                template: :form:success.html.twig
-            sendmail:
-                email_sender: test@test.com
-                email_subject: 'Collected Information from cjwpublish.com'</p>
-<p></pre>
-</li></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2></h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>eedback form - template </p>
-<ul>
-<li>take the standard Symfony form(form) in TWIG template</li>
-</ul>
-<li>
-    <pre class="prettyprint" data-lang="twig">
-{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
-
-{% block content %}
-
-    {{ form(form) }}
-
-{% endblock %}
-    </pre>
-</li></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Frontend editing Edit User - configuration</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>src/Cjw/SiteCjwpublishBundle/Resources/config/formbuilder.yml
-<li>
-    <pre class="prettyprint" data-lang="YAML">
-frontendediting_config:
-    parameters:
-        template: :edit.html.twig
-    handler:
-        success:
-            handler_class: successHandler
-            template: ':email:user_register.html.twig'
-    types:
-        cjw_user:
-            parameters:
-                template: :user:edit.html.twig
-            handler:
-            fields:
-                - first_name
-                - last_name
-                - user_account
-    </pre>
-</li></li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Frontend editing Edit User - template</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
-<li>take the standard Symfony form(form) in TWIG template</li>
-</ul>
-<li>
-    <pre class="prettyprint" data-lang="twig">
-{% extends site_bundle_name ~ '::pagelayout.html.twig' %}
-
-{% block content %}
-
-    {{ form(form) }}
-
-{% endblock %}
-    </pre>
-</li></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>TODO multi site</h2>
-      <h3>How to access the multisite ezpublish console</h3>
-    </hgroup>
-    <article ><li>
-   <pre class="prettyprint" data-lang="bash">
-php cjwpublish/console-cjwpublish
-
-php cjwpublish/console-$ProjectName
-</pre
-</li>
-
-<p>=&gt; is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle</p></article>
  
 </slide>
 
@@ -736,7 +756,7 @@ php cjwpublish/console-$ProjectName
   
     <aside class="gdbar"><img src="images/cjwlogo_128.png" class="noshadow"></aside>
     <hgroup class="auto-fadein">
-      <h2>TODO, aus 2014 Multi-Site/Multi-Repository Setup</h2>
+      <h2>Multi-Site/Multi-Repository Setup</h2>
       <h3></h3>
     </hgroup>
   
@@ -769,16 +789,17 @@ php cjwpublish/console-$ProjectName
 <slide  >
   
     <hgroup>
-      <h2>TODO, aus 2014Multi-Site/Multi-Repository Setup in eZ 5</h2>
+      <h2>Multi-Site/Multi-Repository Setup in eZ 5</h2>
       <h3></h3>
     </hgroup>
-    <article ><p><em>First Approach (proven in production and depreciated)</em></p>
+    <article ><p><em>First Approach 2014 (proven in production and depreciated)</em></p>
 <ul class="build fade">
 <li class="fade"><em>Use different ezpublish app directories to host the different sites</em></li>
 </ul>
-<p><strong>Second approach (proven in production)</strong></p>
+<p><strong>Second approach 2015 (proven in production)</strong></p>
 <ul class="build fade">
-<li class="fade">Use TODO ab hier bitte überarbeiten: <code>CJW MultiSiteBundle</code></li>
+<li class="fade">Use <code>CJW MultiSiteBundle</code></li>
+<li class="fade"><a href="https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle">https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle</a></li>
 </ul></article>
  
 </slide>
@@ -786,31 +807,10 @@ php cjwpublish/console-$ProjectName
 <slide  >
   
     <hgroup>
-      <h2>TODO, aus 2014Introducing CJW MultiSiteBundle</h2>
+      <h2>CJW MultiSiteBundle Features</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Although the first approach works fine, it has several drawbacks:</p>
-<ul class="build">
-<li>Application code scattered at different places (site directory, bundle, legacy extension), hard to maintain in VCS, hard to deploy</li>
-<li>Redundancy in config files</li>
-<li>No global settings</li>
-<li>
-<p>No central site activation/administration</p>
-</li>
-<li>
-<p>Goal: keep everything in one place!</p>
-</li>
-</ul></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>TODO, aus 2014CJW MultiSiteBundle Features</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul class="build">
+    <article ><ul>
 <li>Boots kernel and environment based on domain name mappings</li>
 <li>Handles local, staging and live domain names</li>
 <li>Allows for global activation of bundles</li>
@@ -826,89 +826,132 @@ php cjwpublish/console-$ProjectName
 <slide  >
   
     <hgroup>
-      <h2>TODO, aus 2014cjwpublish Directory</h2>
+      <h2>Directory structure</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>The <code>cjwpublish</code> application directory sits next to the <code>ezpublish</code> directory.</p>
-<pre class="">
-cjwpublish
-&#8990; config
-    cjwpublish.yml                  &lt;-- defines active bundles
-    config.yml                      &lt;-- allows for global settings
-  CjwPublishKernel.php              &lt;-- inherits from CjwMultiSiteKernel.php
-  CjwPublishCache.php               &lt;-- inherits from CjwMultiSiteCache.php
-  console
-</pre></article>
+    <article ><p>The name of the project is <code>cjwpublish</code>.</p>
+<ul>
+<li>Bundle:        <em>src/Cjw/CjwSiteCjwpublishBundle</em></li>
+<li>ProjectName:   <em>cjwpublish</em></li>
+<li>VarFolder:     <em>ezpublish_legacy/var/cjwpublish</em></li>
+<li>CacheFolder:   <em>ezpublish_legacy/var_cache/cjwpublish</em></li>
+<li>LogFolder:     <em>ezpublish_legacy/var_log/cjwpublish</em></li>
+</ul></article>
  
 </slide>
 
 <slide  >
   
     <hgroup>
-      <h2>TODO, aus 2014Symfony's app directory is back</h2>
+      <h2>Prod and Dev Environment -> Prod</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Site Bundle Directory Layout</p>
-<pre class="">
-src
-&#8990; Cjw
-  &#8990; SiteExampleBundle
-    &#8990; app
-      &#8990; config
-          cjwpublish.yml            &lt;-- contains domain mappings
-          config.yml
-          ezpublish.yml
-          ...
-        CjwSiteExampleKernel.php    &lt;-- inherits from CjwPublishKernel.php
-        CjwSiteExampleCache.php     &lt;-- inherits from CjwPublishCache.php
-    &#8990; Controller
-      ...
-</pre></article>
+    <article ><p>Access to english/german frontend and backend siteaccesses</p>
+<p>Production:</p>
+<pre><code>http://www.cjwpublish.com/    =&gt; en
+http://www.cjwpublish.com/en  
+http://www.cjwpublish.com/de
+
+http://www.cjwpublish.com/admin_en
+http://www.cjwpublish.com/admin_de
+</code></pre></article>
  
 </slide>
 
 <slide  >
   
     <hgroup>
-      <h2>TODO, aus 2014Caveats</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Adjustments needed in <code>config.yml</code> to reflect different relative location of kernel</p>
-<pre class="prettyprint" data-lang="yml">
-assetic:
-    ...
-    read_from:      %kernel.root_dir%/../../../../web
-    write_to:       %kernel.root_dir%/../../../../web
-    ...
-ez_publish_legacy:
-    ...
-    root_dir: %kernel.root_dir%/../../../../ezpublish_legacy
-
-parameters:
-    ezpublish.kernel.root_dir: %kernel.root_dir%/../../../../vendor/ezsystems/ezpublish-kernel
-</pre>
-
-<p><strong>More problems of this kind expected!</strong></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>TODO, aus 2014 Project Status TODO</h2>
+      <h2>Prod and Dev Environment -> Dev</h2>
       <h3></h3>
     </hgroup>
     <article ><ul>
-<li>Currently in private Beta, not yet released</li>
-<li>Ideas and Feedback welcome</li>
+<li>Development:  MatchingRule matching begins with <em>www.cjwpublish.com.</em>/de*  is matching de german siteaccess</li>
+<li>so every developer can be access if the dev computer can be access by default local dns entry </li>
+<li>e.g.  <em>.fw.lokal and if the vhost matches all </em>.cjwpublish1411.*</li>
 <li>
-<p>Public Beta in October</p>
+<p>the following url can be accessed</p>
+<p>http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/    =&gt; en
+http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/en<br />
+http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/de</p>
+<p>http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/admin_en
+http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/admin_de</p>
 </li>
-<li>
-<p><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;">&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;</a></p>
-</li>
-<li><a href="https://github.com/cjw-network/MultiSiteBundle">https://github.com/cjw-network/MultiSiteBundle</a></li>
 </ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Access to multisite ezpublish console</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle</p>
+<li>
+<pre class="prettyprint" data-lang="bash">
+php cjwpublish/console-cjwpublish
+
+php cjwpublish/console-$ProjectName
+    </pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>de / en siteaccess host/uri matching I</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><li>
+<pre class="prettyprint" data-lang="yaml">
+# src/Cjw/SiteCjwpublishBundle/Resources/config/site.yml
+ezpublish:
+    siteaccess:
+        # cjwpublish_user__en
+        default_siteaccess: %cjwsite.name.project%_user__en
+        list:
+            - %cjwsite.name.project%_user__en
+            - %cjwsite.name.project%_user__de
+            - %cjwsite.name.project%_admin__en
+            - %cjwsite.name.project%_admin__de
+        groups:
+            %cjwsite.name.project%_user_group:
+                - %cjwsite.name.project%_user__en
+                - %cjwsite.name.project%_user__de
+            %cjwsite.name.project%_admin_group:
+                - %cjwsite.name.project%_admin__en
+                - %cjwsite.name.project%_admin__de
+</pre>
+</li></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>de / en siteaccess host/uri matching II</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><li>
+<pre class="prettyprint" data-lang="yaml">
+# src/Cjw/SiteCjwpublishBundle/Resources/config/site.yml
+# https://doc.ez.no/display/EZP/Siteaccess+Matching
+match:
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal \Cjw\MultiSiteBundle\Matcher\MapHost: => begins_with
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal/de/ => www.cjwpublish.com/de => siteaccess: cjwpublish_user__de
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal/ => www.cjwpublish.com/en/(default) => default uri en => siteaccess: cjwpublish_user__en
+    \Cjw\MultiSiteBundle\Matcher\MapHostURI:
+        www.cjwpublish.com/en/(default): %cjwsite.name.project%_user__en
+        www.cjwpublish.com/de: %cjwsite.name.project%_user__de
+        www.cjwpublish.com/admin_en: %cjwsite.name.project%_admin__en
+        www.cjwpublish.com/admin_de: %cjwsite.name.project%_admin__de
+        cjwpublish.com/en/(default): %cjwsite.name.project%_user__en
+        cjwpublish.com/de: %cjwsite.name.project%_user__de
+        cjwpublish.com/admin_en: %cjwsite.name.project%_admin__en
+        cjwpublish.com/admin_de: %cjwsite.name.project%_admin__de
+</pre>
+</li></article>
  
 </slide>
 
@@ -926,13 +969,16 @@ parameters:
 <ul>
 <li><a href="https://github.com/cjw-network/cjw-summercamp-slides">https://github.com/cjw-network/cjw-summercamp-slides</a></li>
 </ul>
-<p>CJW MultiSiteBundle TODO link to cjwpublish</p>
+<p>CJW MultiSiteBundle</p>
 <ul>
-<li><a href="https://github.com/cjw-network/MultiSiteBundle">https://github.com/cjw-network/MultiSiteBundle</a></li>
+<li><a href="https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle">https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle</a></li>
 </ul>
 <p>CJW Publish for quick start
 <em> <a href="https://github.com/cjw-network/cjwpublish1411">https://github.com/cjw-network/cjwpublish1411</a>
-</em> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;">&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;</a></p></article>
+</em> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;">&#105;&#110;&#102;&#111;&#64;&#99;&#106;&#119;&#45;&#110;&#101;&#116;&#119;&#111;&#114;&#107;&#46;&#99;&#111;&#109;</a></p>
+<ul>
+<li><a href="https://joind.in/15118">https://joind.in/15118</a></li>
+</ul></article>
  
 </slide>
 

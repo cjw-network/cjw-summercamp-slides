@@ -49,6 +49,7 @@ Things we would like to discuss:
 - Run legacy only
 - Run eZ Publih 5 Symfony stack only
 - Your fast (easy) way to pure TWIG Templates
+- If there is time: Multi-Site/Multi-Repository Setup
  
 
 ---
@@ -348,53 +349,7 @@ class: smaller
 
 ---
 
-title: A short walk through to Multi language
 
-<img src="images/en-de-01.png" alt="" width="400px" style="margin-top:-30px">
-
-- <http://www.cjwpublish.com/>    => en
-- <http://www.cjwpublish.com/en>  
-- <http://www.cjwpublish.com/de>
-
-- <http://www.cjwpublish.com/admin_en> or <http://www.cjwpublish.com/admin_de>
- 
----
-
-title: A short walk through to multi language
-subtitle: Using the translation system.
-
-
-- translations for static strings => formbuilder uses the trans system from symfony
-
-- src/Cjw/PublishToolsBundle/Resources/translations/messages.de.yml  *Deutsch* 
-- src/Cjw/PublishToolsBundle/Resources/translations/messages.en.yml  *English*
-
----
-
-title: A short walk through to multi language
-subtitle: How to translate strings using the messages file.
-
-- ../Resources/translations/messages.de.yml
-<li>
-   <pre class="prettyprint" data-lang="yaml">
-   cjw_publishtools.formbuilder.user.email: 'Die E-Mail-Adresse'
-</pre>
-</li>
-- ../Resources/translations/messages.en.yml
-<li>
-   <pre class="prettyprint" data-lang="yaml">
-   cjw_publishtools.formbuilder.user.email: 'E-Mail-Address'
-</pre>
-</li>
-- TWIG template
-<li>
-   <pre class="prettyprint" data-lang="twig">
-   {{ 'cjw_publishtools.formbuilder.user.email'|trans }}
-</pre>
-</li>
-
-
----
 
 title: Feedback Form (infocollector) I
 subtitle: what is it doing
@@ -454,7 +409,7 @@ types:
 
 ---
 
-eedback form - template 
+title: Feedback form - template 
 
 - take the standard Symfony form(form) in TWIG template
 
@@ -469,6 +424,17 @@ eedback form - template
 {% endblock %}
     </pre>
 </li>
+
+---
+
+title: formbuilder
+
+- forms can be defined in a yaml file or as a content class with infocollector fields
+- stackable handler: send email, add to infocollector (needs orm), success
+- forms defined via content classes can use the eZ Publish build in template override mechanism
+- easy to use frontend editing (add and edit content)
+- easy to use user register
+- **hacking php classes is not needed**
 
 ---
 
@@ -516,23 +482,68 @@ title: Frontend editing Edit User - template
 
 ---
 
-title: TODO multi site
-subtitle: How to access the multisite ezpublish console
+title: A short walk through to Multi language
 
+<img src="images/en-de-01.png" alt="" width="400px" style="margin-top:-30px">
+
+- <http://www.cjwpublish.com/>    => en
+- <http://www.cjwpublish.com/en>  
+- <http://www.cjwpublish.com/de>
+
+- <http://www.cjwpublish.com/admin_en> or <http://www.cjwpublish.com/admin_de>
+ 
+---
+
+title: A short walk through to multi language
+subtitle: Using the translation system.
+
+
+- translations for static strings => formbuilder uses the trans system from symfony
+
+- src/Cjw/PublishToolsBundle/Resources/translations/messages.de.yml  *Deutsch* 
+- src/Cjw/PublishToolsBundle/Resources/translations/messages.en.yml  *English*
+
+---
+
+title: A short walk through to multi language
+subtitle: How to translate strings using the messages file.
+
+- ../Resources/translations/messages.de.yml
 <li>
-   <pre class="prettyprint" data-lang="bash">
-php cjwpublish/console-cjwpublish   
-
-php cjwpublish/console-$ProjectName
-</pre
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'Die E-Mail-Adresse'
+</pre>
 </li>
-
-=> is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle
+- ../Resources/translations/messages.en.yml
+<li>
+   <pre class="prettyprint" data-lang="yaml">
+   cjw_publishtools.formbuilder.user.email: 'E-Mail-Address'
+</pre>
+</li>
+- TWIG template
+<li>
+   <pre class="prettyprint" data-lang="twig">
+   {{ 'cjw_publishtools.formbuilder.user.email'|trans }}
+</pre>
+</li>
 
 
 ---
 
-title: TODO, aus 2014 Multi-Site/Multi-Repository Setup
+title: Performance
+subtitle: cjw_render_location vs. subcontroller calls
+
+- e.g. *render( controller( ...*  calls in twig  => every subcontroller call costs a lot of time
+  between 30 - 100 ms so for a loop with 10 line view you can often save **1 second** ! if you use a normal template include or our
+  
+- *cjw_render_location twig* function which uses the override system from ez like the  render( controller( "ez_content:viewLocation", {'location': child, 'viewType': 'line'} uses
+- *avoid stash calls* if you can e.g. to give the location or content as an parameter in stead of the location id
+
+
+
+---
+
+title: Multi-Site/Multi-Repository Setup
 subtitle:
 class: segue dark nobackground
 
@@ -556,37 +567,26 @@ Disadvantages:
 
 ---
 
-title: TODO, aus 2014Multi-Site/Multi-Repository Setup in eZ 5
+title: Multi-Site/Multi-Repository Setup in eZ 5
 build_lists: fade
 
 
-*First Approach (proven in production and depreciated)*
+*First Approach 2014 (proven in production and depreciated)*
 
 *  *Use different ezpublish app directories to host the different sites*
 
 
-**Second approach (proven in production)**
+**Second approach 2015 (proven in production)**
 
-* Use TODO ab hier bitte überarbeiten: `CJW MultiSiteBundle`
+* Use `CJW MultiSiteBundle`
+* <https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle>
 
----
 
-title: TODO, aus 2014Introducing CJW MultiSiteBundle
-build_lists: true
-
-Although the first approach works fine, it has several drawbacks:
-
-* Application code scattered at different places (site directory, bundle, legacy extension), hard to maintain in VCS, hard to deploy
-* Redundancy in config files
-* No global settings
-* No central site activation/administration
-
-* Goal: keep everything in one place!
 
 ---
 
-title: TODO, aus 2014CJW MultiSiteBundle Features
-build_lists: true
+title: CJW MultiSiteBundle Features
+
 
 * Boots kernel and environment based on domain name mappings
 * Handles local, staging and live domain names
@@ -599,74 +599,113 @@ build_lists: true
 
 ---
 
-title: TODO, aus 2014cjwpublish Directory
+title: Directory structure
 
-The `cjwpublish` application directory sits next to the `ezpublish` directory.
+The name of the project is `cjwpublish`.
 
-<pre class="">
-cjwpublish
-&#8990; config
-    cjwpublish.yml                  &lt;-- defines active bundles
-    config.yml                      &lt;-- allows for global settings
-  CjwPublishKernel.php              &lt;-- inherits from CjwMultiSiteKernel.php
-  CjwPublishCache.php               &lt;-- inherits from CjwMultiSiteCache.php
-  console
-</pre>
 
----
 
-title: TODO, aus 2014Symfony's app directory is back
+- Bundle:        *src/Cjw/CjwSiteCjwpublishBundle*
+- ProjectName:   *cjwpublish*
+- VarFolder:     *ezpublish_legacy/var/cjwpublish*
+- CacheFolder:   *ezpublish_legacy/var_cache/cjwpublish*
+- LogFolder:     *ezpublish_legacy/var_log/cjwpublish*
 
-Site Bundle Directory Layout
-
-<pre class="">
-src
-&#8990; Cjw
-  &#8990; SiteExampleBundle
-    &#8990; app
-      &#8990; config
-          cjwpublish.yml            &lt;-- contains domain mappings
-          config.yml
-          ezpublish.yml
-          ...
-        CjwSiteExampleKernel.php    &lt;-- inherits from CjwPublishKernel.php
-        CjwSiteExampleCache.php     &lt;-- inherits from CjwPublishCache.php
-    &#8990; Controller
-      ...
-</pre>
 
 ---
 
-title: TODO, aus 2014Caveats
+title: Prod and Dev Environment -> Prod
 
-Adjustments needed in `config.yml` to reflect different relative location of kernel
+Access to english/german frontend and backend siteaccesses
 
-<pre class="prettyprint" data-lang="yml">
-assetic:
-    ...
-    read_from:      %kernel.root_dir%/../../../../web
-    write_to:       %kernel.root_dir%/../../../../web
-    ...
-ez_publish_legacy:
-    ...
-    root_dir: %kernel.root_dir%/../../../../ezpublish_legacy
+Production:
 
-parameters:
-    ezpublish.kernel.root_dir: %kernel.root_dir%/../../../../vendor/ezsystems/ezpublish-kernel
-</pre>
-
-**More problems of this kind expected!**
+    http://www.cjwpublish.com/    => en
+    http://www.cjwpublish.com/en  
+    http://www.cjwpublish.com/de
+    
+    http://www.cjwpublish.com/admin_en
+    http://www.cjwpublish.com/admin_de
 
 ---
 
-title: TODO, aus 2014 Project Status TODO
+title: Prod and Dev Environment -> Dev
 
-* Currently in private Beta, not yet released
-* Ideas and Feedback welcome
-* Public Beta in October
+- Development:  MatchingRule matching begins with *www.cjwpublish.com.*/de*  is matching de german siteaccess
+- so every developer can be access if the dev computer can be access by default local dns entry 
+- e.g.  *.fw.lokal and if the vhost matches all *.cjwpublish1411.*
+- the following url can be accessed
 
-* <mailto:info@cjw-network.com>
-* <https://github.com/cjw-network/MultiSiteBundle>
+    http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/    => en
+    http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/en  
+    http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/de
+    
+    http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/admin_en
+    http://www.cjwpublish.com.cjwpublish1411dev.fw.lokal/admin_de
+
+---
+
+title: Access to multisite ezpublish console
+
+is the same as php ezpublish/console but only for multitsitesetup to call the kernel from src/Cjw/CjwSiteCjwpublishBundle
+
+<li>
+<pre class="prettyprint" data-lang="bash">
+php cjwpublish/console-cjwpublish   
+
+php cjwpublish/console-$ProjectName
+    </pre>
+</li> 
+
+---
+
+title: de / en siteaccess host/uri matching I
+
+<li>
+<pre class="prettyprint" data-lang="yaml">
+# src/Cjw/SiteCjwpublishBundle/Resources/config/site.yml
+ezpublish:
+    siteaccess:
+        # cjwpublish_user__en
+        default_siteaccess: %cjwsite.name.project%_user__en
+        list:
+            - %cjwsite.name.project%_user__en
+            - %cjwsite.name.project%_user__de
+            - %cjwsite.name.project%_admin__en
+            - %cjwsite.name.project%_admin__de
+        groups:
+            %cjwsite.name.project%_user_group:
+                - %cjwsite.name.project%_user__en
+                - %cjwsite.name.project%_user__de
+            %cjwsite.name.project%_admin_group:
+                - %cjwsite.name.project%_admin__en
+                - %cjwsite.name.project%_admin__de
+</pre>
+</li>
+
+---
+
+title: de / en siteaccess host/uri matching II
+
+<li>
+<pre class="prettyprint" data-lang="yaml">
+# src/Cjw/SiteCjwpublishBundle/Resources/config/site.yml
+# https://doc.ez.no/display/EZP/Siteaccess+Matching
+match:
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal \Cjw\MultiSiteBundle\Matcher\MapHost: => begins_with
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal/de/ => www.cjwpublish.com/de => siteaccess: cjwpublish_user__de
+    # www.cjwpublish.com.cjwpublish1411.fw.lokal/ => www.cjwpublish.com/en/(default) => default uri en => siteaccess: cjwpublish_user__en
+    \Cjw\MultiSiteBundle\Matcher\MapHostURI:
+        www.cjwpublish.com/en/(default): %cjwsite.name.project%_user__en
+        www.cjwpublish.com/de: %cjwsite.name.project%_user__de
+        www.cjwpublish.com/admin_en: %cjwsite.name.project%_admin__en
+        www.cjwpublish.com/admin_de: %cjwsite.name.project%_admin__de
+        cjwpublish.com/en/(default): %cjwsite.name.project%_user__en
+        cjwpublish.com/de: %cjwsite.name.project%_user__de
+        cjwpublish.com/admin_en: %cjwsite.name.project%_admin__en
+        cjwpublish.com/admin_de: %cjwsite.name.project%_admin__de
+</pre>
+</li>
 
 ---
 
@@ -681,13 +720,15 @@ Slides (Source)
 
 * <https://github.com/cjw-network/cjw-summercamp-slides>
 
-CJW MultiSiteBundle TODO link to cjwpublish
+CJW MultiSiteBundle
 
-* <https://github.com/cjw-network/MultiSiteBundle>
+* <https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle>
 
 CJW Publish for quick start
 * <https://github.com/cjw-network/cjwpublish1411>
 * <mailto:info@cjw-network.com>
+
+* <https://joind.in/15118>
 
 ---
 
