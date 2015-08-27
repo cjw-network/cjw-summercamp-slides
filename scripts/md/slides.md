@@ -732,7 +732,7 @@ CJW Publish for quick start
 
 ---
 
-title: <a href="http://vote.netgenlabs.com/" style="color:#fff;">http://vote.netgenlabs.com/</a>
+title: <a href="http://events.netgen.io/" style="color:#fff;">http://events.netgen.io/</a>
 subtitle: Please Vote!
 class: segue dark nobackground
 
