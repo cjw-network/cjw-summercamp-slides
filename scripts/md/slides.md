@@ -317,7 +317,7 @@ title: Pagination (was called Google navigator)
 title: Article full view screenshot
 
 
-<img src="images/article_full_view.png" alt="" width="741" style="margin-top:-30px">
+<img src="images/article_full_view.png" alt="" width="680" style="margin-top:-30px">
 
 ---
 
@@ -725,10 +725,8 @@ CJW MultiSiteBundle
 * <https://github.com/cjw-network/cjwpublish1411/tree/master/src/Cjw/MultiSiteBundle>
 
 CJW Publish for quick start
-* <https://github.com/cjw-network/cjwpublish1411>
-* <mailto:info@cjw-network.com>
 
-* <https://joind.in/15118>
+* <https://github.com/cjw-network/cjwpublish1411> | <https://joind.in/15118>
 
 ---
 
